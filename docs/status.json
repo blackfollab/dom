@@ -1,0 +1,15 @@
+{
+  "lastRun": "2026-11-10T12:31:43.043Z",
+  "lastSuccess": "2026-11-10T12:31:43.043Z",
+  "lastFailure": null,
+  "history": [
+    {
+      "date": "2026-11-10",
+      "ok": 0,
+      "noop": 15,
+      "failed": 0,
+      "total": 15,
+      "fixed": []
+    }
+  ]
+}
