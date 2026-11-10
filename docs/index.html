@@ -3,165 +3,326 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Crypto Sync Status</title>
+  <meta name="robots" content="noindex, nofollow">
+  <title>Secure Crypto Sync</title>
   <style>
-    body { font-family: system-ui, -apple-system, sans-serif; max-width: 1100px; margin: 2rem auto; padding: 0 1rem; color: #333; background: #f9fafb; }
-    h1 { font-size: 1.5rem; border-bottom: 2px solid #e5e7eb; padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
-    h2 { font-size: 1.2rem; margin-top: 2.5rem; color: #111827; }
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --primary: #3b82f6;
+      --success: #10b981;
+      --danger: #ef4444;
+      --border: #334155;
+    }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 2rem 1rem; line-height: 1.5; }
+    .container { max-width: 1200px; margin: 0 auto; display: none; }
+    .container.unlocked { display: block; }
     
-    /* Dashboard Cards */
-    .dashboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
-    .card { background: white; border: 1px solid #e5e7eb; padding: 1.2rem; border-radius: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
-    .card h3 { margin: 0 0 0.5rem 0; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: #6b7280; }
-    .card p { margin: 0; font-size: 1.1rem; font-weight: 600; color: #111827; }
-    .card.failure { border-left: 4px solid #ef4444; }
-    .card.success { border-left: 4px solid #10b981; }
+    /* Login Screen */
+    #login-screen { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 80vh; }
+    .login-box { background: var(--card-bg); padding: 2.5rem; border-radius: 12px; border: 1px solid var(--border); text-align: center; width: 100%; max-width: 350px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+    .login-box h2 { margin-top: 0; color: var(--text); }
+    .login-box input { width: 100%; padding: 0.75rem; margin: 1rem 0; background: var(--bg); border: 1px solid var(--border); border-radius: 6px; color: white; box-sizing: border-box; }
+    .login-box button { width: 100%; padding: 0.75rem; background: var(--primary); color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; }
+    .login-box button:hover { background: #2563eb; }
+    .error-msg { color: var(--danger); font-size: 0.85rem; display: none; margin-top: 0.5rem; }
+
+    /* Dashboard */
+    header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 1rem; margin-bottom: 2rem; }
+    h1 { margin: 0; font-size: 1.5rem; color: var(--text); }
+    .settings-btn { background: transparent; border: 1px solid var(--border); color: var(--text-muted); padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-size: 0.85rem; }
+    .settings-btn:hover { background: var(--card-bg); color: white; }
+    
+    .dashboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem; }
+    .card { background: var(--card-bg); border: 1px solid var(--border); padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); position: relative; overflow: hidden; }
+    .card h3 { margin: 0 0 0.5rem 0; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
+    .card p { margin: 0; font-size: 1.2rem; font-weight: 700; }
+    .card.failure::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--danger); }
+    .card.success::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--success); }
 
     /* Tables */
-    table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden; margin-top: 1rem; }
-    th, td { text-align: left; padding: 0.75rem 1rem; border-bottom: 1px solid #e5e7eb; font-size: 0.9rem; }
-    th { background: #f3f4f6; font-weight: 600; color: #374151; }
+    table { width: 100%; border-collapse: collapse; background: var(--card-bg); border-radius: 8px; overflow: hidden; margin-top: 1rem; border: 1px solid var(--border); }
+    th, td { text-align: left; padding: 1rem; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+    th { background: rgba(255,255,255,0.03); font-weight: 600; color: var(--text-muted); }
+    tr:last-child td { border-bottom: none; }
     
-    /* Badges */
-    .badge { display: inline-block; padding: 0.25rem 0.6rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; }
-    .badge.ok { background: #d1fae5; color: #065f46; }
-    .badge.noop { background: #f3f4f6; color: #374151; }
-    .badge.failed { background: #fee2e2; color: #991b1b; }
+    /* Badges & Toggles */
+    .badge { display: inline-block; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; }
+    .badge.ok { background: rgba(16, 185, 129, 0.2); color: var(--success); }
+    .badge.noop { background: rgba(148, 163, 184, 0.2); color: var(--text-muted); }
+    .badge.failed { background: rgba(239, 68, 68, 0.2); color: var(--danger); }
     
-    .fixed-list { font-size: 0.85rem; color: #2563eb; font-weight: 500; }
-    .error-msg { font-size: 0.85rem; color: #dc2626; }
-    .timestamp { color: #6b7280; font-size: 0.85rem; text-align: right; margin-top: 1rem; }
+    .fixed-list { color: #60a5fa; }
+    .error-msg { color: #f87171; }
+    
+    /* Switch */
+    .switch { position: relative; display: inline-block; width: 44px; height: 24px; }
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #475569; transition: .4s; border-radius: 24px; }
+    .slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
+    input:checked + .slider { background-color: var(--primary); }
+    input:checked + .slider:before { transform: translateX(20px); }
+    input:disabled + .slider { opacity: 0.5; cursor: not-allowed; }
+
+    /* Modals */
+    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 100; align-items: center; justify-content: center; }
+    .modal-content { background: var(--card-bg); padding: 2rem; border-radius: 12px; width: 100%; max-width: 500px; border: 1px solid var(--border); }
+    .modal-content input { width: 100%; padding: 0.75rem; margin: 1rem 0; background: var(--bg); border: 1px solid var(--border); border-radius: 6px; color: white; box-sizing: border-box; }
+    .modal-content button { padding: 0.75rem 1.5rem; background: var(--primary); color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; float: right; }
   </style>
 </head>
 <body>
-  <h1>🔄 Crypto Address Sync — Dashboard</h1>
-  
-  <!-- Top Dashboard -->
-  <div class="dashboard">
-    <div class="card">
-      <h3>Last Run</h3>
-      <p id="last-run">Loading...</p>
-    </div>
-    <div class="card success">
-      <h3>Last Success</h3>
-      <p id="last-success">Loading...</p>
-    </div>
-    <div class="card failure">
-      <h3>Last Failure</h3>
-      <p id="last-failure">Never</p>
+
+  <!-- LOGIN SCREEN -->
+  <div id="login-screen">
+    <div class="login-box">
+      <h2>🔒 Secure Access</h2>
+      <p style="color: var(--text-muted); font-size: 0.9rem;">Enter password to view dashboard</p>
+      <input type="password" id="password-input" placeholder="Password" onkeypress="handleEnter(event)">
+      <button onclick="checkPassword()">Unlock</button>
+      <p class="error-msg" id="login-error">Incorrect password</p>
     </div>
   </div>
 
-  <!-- Latest Domains -->
-  <h2>Latest Run Details</h2>
-  <table id="domains">
-    <thead>
-      <tr><th>Domain</th><th>Status</th><th>Details / Fixed</th></tr>
-    </thead>
-    <tbody></tbody>
-  </table>
-  <p id="last-run-timestamp" class="timestamp"></p>
+  <!-- DASHBOARD -->
+  <div class="container" id="dashboard-container">
+    <header>
+      <h1>🔄 Crypto Sync Dashboard</h1>
+      <button class="settings-btn" onclick="openSettings()">⚙️ GitHub Settings</button>
+    </header>
 
-  <!-- Daily History -->
-  <h2>Daily Activity History (Last 30 Days)</h2>
-  <table id="history">
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Domains Checked</th>
-        <th>Fixed</th>
-        <th>Failed</th>
-        <th>Addresses Changed</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
+    <div class="dashboard">
+      <div class="card">
+        <h3>Last Run</h3>
+        <p id="last-run">Loading...</p>
+      </div>
+      <div class="card success">
+        <h3>Last Success</h3>
+        <p id="last-success" style="color: var(--success)">Loading...</p>
+      </div>
+      <div class="card failure">
+        <h3>Last Failure</h3>
+        <p id="last-failure" style="color: var(--danger)">Never</p>
+      </div>
+    </div>
+
+    <h2>Domain Controls</h2>
+    <table id="domains">
+      <thead>
+        <tr><th>Domain</th><th>Status</th><th>Active (Toggle)</th><th>Details / Fixed</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <h2 style="margin-top: 3rem;">Error Log (Last 50)</h2>
+    <table id="error-log">
+      <thead>
+        <tr><th>Date & Time</th><th>Domain</th><th>Error Message</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <h2 style="margin-top: 3rem;">Daily Activity History (Last 30 Days)</h2>
+    <table id="history">
+      <thead>
+        <tr><th>Date</th><th>Checked</th><th>OK</th><th>Failed</th><th>Addresses Changed</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <!-- SETTINGS MODAL -->
+  <div class="modal" id="settings-modal">
+    <div class="modal-content">
+      <h2>GitHub Settings</h2>
+      <p style="color: var(--text-muted); font-size: 0.85rem;">To toggle domains, paste a GitHub Personal Access Token with <code>repo</code> permissions. It is saved locally in your browser.</p>
+      <input type="password" id="pat-input" placeholder="ghp_...">
+      <button onclick="saveSettings()">Save</button>
+      <button onclick="closeSettings()" style="background: transparent; color: var(--text-muted); margin-right: 0.5rem;">Cancel</button>
+    </div>
+  </div>
 
   <script>
-    // Format date nicely
-    function fmtDate(iso) {
-      if (!iso) return 'Never';
-      const d = new Date(iso);
-      return d.toLocaleString(undefined, { 
-        year: 'numeric', month: 'short', day: 'numeric', 
-        hour: '2-digit', minute: '2-digit' 
-      });
+    // --- PASSWORD GATE ---
+    const CORRECT_PASSWORD = "0987654321";
+    
+    function checkPassword() {
+      const val = document.getElementById('password-input').value;
+      if (val === CORRECT_PASSWORD) {
+        sessionStorage.setItem('unlocked', 'true');
+        showDashboard();
+      } else {
+        document.getElementById('login-error').style.display = 'block';
+      }
     }
 
-    async function load() {
-      // 1. Load Current Run Data
+    function handleEnter(e) {
+      if (e.key === 'Enter') checkPassword();
+    }
+
+    function showDashboard() {
+      document.getElementById('login-screen').style.display = 'none';
+      document.getElementById('dashboard-container').classList.add('unlocked');
+      loadData();
+    }
+
+    if (sessionStorage.getItem('unlocked') === 'true') {
+      showDashboard();
+    }
+
+    // --- SETTINGS / API ---
+    function openSettings() { document.getElementById('settings-modal').style.display = 'flex'; document.getElementById('pat-input').value = localStorage.getItem('gh_pat') || ''; }
+    function closeSettings() { document.getElementById('settings-modal').style.display = 'none'; }
+    function saveSettings() { localStorage.setItem('gh_pat', document.getElementById('pat-input').value); closeSettings(); }
+
+    async function toggleDomain(domainName, checkboxEl) {
+      const pat = localStorage.getItem('gh_pat');
+      if (!pat) { alert('Please set your GitHub Token in settings first.'); checkboxEl.checked = !checkboxEl.checked; return; }
+      
+      checkboxEl.disabled = true;
+      const apiUrl = 'https://api.github.com/repos/blackfollab/dom/contents/config/disabled.json';
+      
       try {
-        const res = await fetch('last-run.json?cache=' + Date.now());
-        if (!res.ok) throw new Error('No data yet');
-        const data = await res.json();
+        // 1. Get current file (to get SHA)
+        const getRes = await fetch(apiUrl, { headers: { 'Authorization': `Bearer ${pat}` } });
+        const fileData = await getRes.json();
+        const currentList = JSON.parse(atob(fileData.content));
+        
+        // 2. Modify List
+        let newList;
+        if (checkboxEl.checked) {
+          newList = currentList.filter(d => d !== domainName); // Enable
+        } else {
+          newList = [...currentList, domainName]; // Disable
+        }
+        
+        // 3. Save File
+        const putRes = await fetch(apiUrl, {
+          method: 'PUT',
+          headers: { 'Authorization': `Bearer ${pat}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            message: `toggle: ${checkboxEl.checked ? 'enable' : 'disable'} ${domainName}`,
+            content: btoa(JSON.stringify(newList, null, 2)),
+            sha: fileData.sha
+          })
+        });
+        
+        if (!putRes.ok) throw new Error('Failed to update file');
+      } catch (err) {
+        console.error(err);
+        alert('Error updating toggle. Check your token permissions.');
+        checkboxEl.checked = !checkboxEl.checked; // revert
+      } finally {
+        checkboxEl.disabled = false;
+      }
+    }
 
-        document.getElementById('last-run-timestamp').textContent = 'Last run: ' + fmtDate(data.timestamp);
+    // --- LOAD DATA ---
+    function fmtDate(iso) {
+      if (!iso) return 'Never';
+      return new Date(iso).toLocaleString(undefined, { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+    }
 
+    async function loadData() {
+      try {
+        // Load Last Run Details
+        const resLast = await fetch('last-run.json?cache=' + Date.now());
+        const lastRun = await resLast.json();
+        
+        // Load Status (History & Errors)
+        const resStatus = await fetch('status.json?cache=' + Date.now());
+        const status = await resStatus.json();
+        
+        // Load Disabled Config
+        const resDisabled = await fetch('../config/disabled.json?cache=' + Date.now()).catch(() => ({ ok: false }));
+        let disabledList = [];
+        if (resDisabled.ok) {
+           disabledList = await resDisabled.json();
+        } else {
+           // Fallback if GitHub pages doesn't serve config folder, use a raw link
+           const raw = await fetch('https://raw.githubusercontent.com/blackfollab/dom/main/config/disabled.json').catch(()=>null);
+           if (raw && raw.ok) disabledList = await raw.json();
+        }
+
+        // 1. Render Top Cards
+        document.getElementById('last-run').textContent = fmtDate(status.lastRun);
+        document.getElementById('last-success').textContent = fmtDate(status.lastSuccess);
+        document.getElementById('last-failure').textContent = status.lastFailure ? fmtDate(status.lastFailure) : 'Never';
+
+        // 2. Render Domains
         const tbody = document.querySelector('#domains tbody');
         tbody.innerHTML = '';
-        for (const d of data.domains) {
+        for (const d of lastRun.domains) {
           const badgeClass = d.status === 'ok' ? 'ok' : d.status === 'noop' ? 'noop' : 'failed';
           const details = d.changes && Object.keys(d.changes).length
-            ? '<span class="fixed-list">✓ Fixed: ' + Object.keys(d.changes).join(', ') + '</span>'
-            : (d.error ? '<span class="error-msg">✗ ' + d.error + '</span>' : '');
+            ? `<span class="fixed-list">✓ Fixed: ${Object.keys(d.changes).join(', ')}</span>`
+            : (d.error ? `<span class="error-msg">✗ ${d.error}</span>` : '');
+          
+          const isEnabled = !disabledList.includes(d.name);
           
           tbody.innerHTML += `
             <tr>
               <td><strong>${d.name}</strong></td>
               <td><span class="badge ${badgeClass}">${d.status}</span></td>
+              <td>
+                <label class="switch">
+                  <input type="checkbox" ${isEnabled ? 'checked' : ''} onchange="toggleDomain('${d.name}', this)">
+                  <span class="slider"></span>
+                </label>
+              </td>
               <td>${details}</td>
             </tr>
           `;
         }
-      } catch (e) {
-        console.error(e);
-      }
 
-      // 2. Load Status (Last Run/Success/Failure)
-      try {
-        const resStatus = await fetch('status.json?cache=' + Date.now());
-        if (!resStatus.ok) throw new Error('No status yet');
-        const status = await resStatus.json();
-
-        document.getElementById('last-run').textContent = fmtDate(status.lastRun);
-        document.getElementById('last-success').textContent = fmtDate(status.lastSuccess);
-        document.getElementById('last-failure').textContent = status.lastFailure ? fmtDate(status.lastFailure) : 'Never';
-
-        if (!status.lastFailure) {
-           document.getElementById('last-failure').style.color = '#6b7280';
+        // 3. Render Error Log
+        const errTbody = document.querySelector('#error-log tbody');
+        errTbody.innerHTML = '';
+        if (status.errorLog && status.errorLog.length > 0) {
+          status.errorLog.forEach(e => {
+            errTbody.innerHTML += `
+              <tr>
+                <td style="color: var(--text-muted); font-size: 0.8rem;">${fmtDate(e.time)}</td>
+                <td><strong>${e.domain}</strong></td>
+                <td><span class="error-msg">${e.error}</span></td>
+              </tr>
+            `;
+          });
         } else {
-           document.getElementById('last-failure').style.color = '#ef4444';
+          errTbody.innerHTML = '<tr><td colspan="3" style="text-align:center; color:var(--text-muted);">No errors recorded yet.</td></tr>';
         }
 
-        // 3. Load History
+        // 4. Render History
         const histTbody = document.querySelector('#history tbody');
         histTbody.innerHTML = '';
-        
-        // Reverse so newest is at the top
-        const historyArr = status.history || [];
-        historyArr.reverse().forEach(day => {
-          const fixed = day.fixed && day.fixed.length > 0 
-            ? '<span class="fixed-list">' + day.fixed.join(', ') + '</span>' 
-            : '<span style="color:#6b7280">—</span>';
+        if (status.history && status.history.length > 0) {
+          status.history.slice().reverse().forEach(day => {
+            const fixed = day.fixed && day.fixed.length > 0 
+              ? `<span class="fixed-list">${day.fixed.join(', ')}</span>` 
+              : '<span style="color:var(--text-muted)">—</span>';
             
-          histTbody.innerHTML += `
-            <tr>
-              <td><strong>${day.date}</strong></td>
-              <td>${day.total}</td>
-              <td><span class="badge ok">${day.ok}</span></td>
-              <td>${day.failed > 0 ? `<span class="badge failed">${day.failed}</span>` : '0'}</td>
-              <td>${fixed}</td>
-            </tr>
-          `;
-        });
-
-      } catch (e) {
-        console.error(e);
+            histTbody.innerHTML += `
+              <tr>
+                <td><strong>${day.date}</strong></td>
+                <td>${day.total}</td>
+                <td><span class="badge ok">${day.ok}</span></td>
+                <td>${day.failed > 0 ? `<span class="badge failed">${day.failed}</span>` : '0'}</td>
+                <td>${fixed}</td>
+              </tr>
+            `;
+          });
+        }
+        
+      } catch (err) {
+        console.error("Load Error:", err);
       }
     }
-    
-    load();
-    setInterval(load, 30000); 
+
+    setInterval(() => {
+      if (sessionStorage.getItem('unlocked') === 'true') loadData();
+    }, 30000);
   </script>
 </body>
 </html>

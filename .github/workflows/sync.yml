@@ -2,9 +2,8 @@ name: Crypto address sync
 
 on:
   schedule:
-    # Every 10 minutes (GitHub Actions cron uses UTC)
     - cron: '*/10 * * * *'
-  workflow_dispatch:  # Manual trigger from the GitHub Actions UI
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -47,6 +46,20 @@ jobs:
       - name: Install Playwright OS deps (if cached)
         if: steps.pw-cache.outputs.cache-hit == 'true'
         run: npx playwright install-deps chromium
+
+      # NEW: Filter out disabled domains before running
+      - name: Filter disabled domains
+        run: |
+          node -e "
+            const fs = require('fs');
+            const domains = JSON.parse(fs.readFileSync('config/domains.json'));
+            let disabled = [];
+            try { disabled = JSON.parse(fs.readFileSync('config/disabled.json')); } catch {}
+            const originalCount = domains.domains.length;
+            domains.domains = domains.domains.filter(d => !disabled.includes(d.name));
+            fs.writeFileSync('config/domains.json', JSON.stringify(domains, null, 2));
+            console.log('Skipped', originalCount - domains.domains.length, 'disabled domains.');
+          "
 
       - name: Restore cookies from secrets
         env:
@@ -93,15 +106,12 @@ jobs:
             echo '{"timestamp":"'$(date -Iseconds)'","summary":{"total":0,"ok":0,"noop":0,"failed":0},"domains":[]}' > docs/last-run.json
           fi
           
-          # Generate/Update status.json and history
           node -e "
             const fs = require('fs');
             const lastRun = JSON.parse(fs.readFileSync('docs/last-run.json'));
-            let status = { lastRun: null, lastSuccess: null, lastFailure: null, history: [] };
+            let status = { lastRun: null, lastSuccess: null, lastFailure: null, errorLog: [], history: [] };
             
-            try { 
-              status = JSON.parse(fs.readFileSync('docs/status.json')); 
-            } catch (e) {}
+            try { status = JSON.parse(fs.readFileSync('docs/status.json')); } catch (e) {}
             
             const now = lastRun.timestamp;
             status.lastRun = now;
@@ -112,6 +122,20 @@ jobs:
               status.lastSuccess = now;
             }
             
+            // Build Error Log (Roll)
+            if (!status.errorLog) status.errorLog = [];
+            lastRun.domains.forEach(d => {
+              if (d.error) {
+                // Prevent duplicate timestamps for the same error
+                const exists = status.errorLog.some(e => e.time === now && e.domain === d.name);
+                if (!exists) {
+                  status.errorLog.unshift({ time: now, domain: d.name, error: d.error });
+                }
+              }
+            });
+            status.errorLog = status.errorLog.slice(0, 50); // Keep last 50 errors
+            
+            // Build History
             const today = new Date().toISOString().split('T')[0];
             const existingIdx = status.history.findIndex(h => h.date === today);
             
