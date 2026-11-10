@@ -2,12 +2,13 @@ name: Crypto address sync
 
 on:
   schedule:
-    # Every 10 minutes (GitHub Actions cron uses UTC, minimum 5-min interval recommended)
     - cron: '*/10 * * * *'
-  workflow_dispatch:  # Manual trigger from the GitHub Actions UI
+  workflow_dispatch:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
   group: crypto-sync
@@ -51,16 +52,13 @@ jobs:
           COOKIE_BITSCREST_COM:              ${{ secrets.COOKIE_BITSCREST_COM }}
           COOKIE_VENOSMARKET_COM:            ${{ secrets.COOKIE_VENOSMARKET_COM }}
           COOKIE_ACCOUNT_AGENCYBROKER_CA:    ${{ secrets.COOKIE_ACCOUNT_AGENCYBROKER_CA }}
-          COOKIE_PHOENIX_MINERS_UK:          ${{ secrets.COOKIE_PHOENIX_MINERS_UK }}
           COOKIE_PARTNER_POWERPIRE_COM:      ${{ secrets.COOKIE_PARTNER_POWERPIRE_COM }}
           COOKIE_ACCOUNT_NOVAGROWTHFUND_COM: ${{ secrets.COOKIE_ACCOUNT_NOVAGROWTHFUND_COM }}
           COOKIE_VORTEXINVESTCAPITAL_ONLINE: ${{ secrets.COOKIE_VORTEXINVESTCAPITAL_ONLINE }}
-          COOKIE_ELITEWPINV_COM:             ${{ secrets.COOKIE_ELITEWPINV_COM }}
           COOKIE_CYPX_CAPITAL:               ${{ secrets.COOKIE_CYPX_CAPITAL }}
           COOKIE_NOVIONCAPITAL_APP:          ${{ secrets.COOKIE_NOVIONCAPITAL_APP }}
           COOKIE_VYROTRADER_COM:             ${{ secrets.COOKIE_VYROTRADER_COM }}
           COOKIE_COINMATRFX_COM:             ${{ secrets.COOKIE_COINMATRFX_COM }}
-          COOKIE_CYNOMINING_CO_UK:           ${{ secrets.COOKIE_CYNOMINING_CO_UK }}
           COOKIE_BLOCKTELLEX_COM:            ${{ secrets.COOKIE_BLOCKTELLEX_COM }}
           COOKIE_VICIREITPROPERTIES_ORG:     ${{ secrets.COOKIE_VICIREITPROPERTIES_ORG }}
           COOKIE_OPULENTDRAGONS_COM:         ${{ secrets.COOKIE_OPULENTDRAGONS_COM }}
@@ -102,3 +100,17 @@ jobs:
           git add docs/last-run.json
           git diff --cached --quiet || git commit -m "update status report"
           git push
+
+      # NEW STEP: Deploy directly to GitHub Pages
+      - name: Deploy to GitHub Pages
+        if: always()
+        uses: actions/configure-pages@v5
+      - name: Upload Pages artifact
+        if: always()
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+      - name: Deploy Pages
+        if: always()
+        id: deployment
+        uses: actions/deploy-pages@v4
