@@ -105,7 +105,6 @@ jobs:
             echo '{"timestamp":"'$(date -Iseconds)'","summary":{"total":0,"ok":0,"noop":0,"failed":0},"domains":[]}' > docs/last-run.json
           fi
           
-          # Generate/Update status.json with full audit logging
           node -e "
             const fs = require('fs');
             const lastRun = JSON.parse(fs.readFileSync('docs/last-run.json'));
@@ -125,27 +124,23 @@ jobs:
             let totalFixesToday = 0;
 
             lastRun.domains.forEach(d => {
-              // Init domain stats
               if (!status.domainStats[d.name]) {
                 status.domainStats[d.name] = { totalChanges: 0, lastChanged: null, lastError: null };
               }
               const stats = status.domainStats[d.name];
               
-              // Log Changes
               if (d.status === 'ok' && d.changes && Object.keys(d.changes).length > 0) {
                 const fixList = Object.keys(d.changes).join(', ');
                 stats.totalChanges += Object.keys(d.changes).length;
                 stats.lastChanged = now;
                 totalFixesToday++;
                 
-                // Add to event feed (avoiding duplicate events in the exact same run)
                 const eventExists = status.events.some(e => e.time === now && e.domain === d.name && e.type === 'change');
                 if (!eventExists) {
                   status.events.unshift({ time: now, type: 'change', domain: d.name, details: 'Fixed: ' + fixList });
                 }
               }
               
-              // Log Errors
               if (d.error) {
                 stats.lastError = d.error;
                 const eventExists = status.events.some(e => e.time === now && e.domain === d.name && e.type === 'error');
@@ -155,9 +150,8 @@ jobs:
               }
             });
             
-            status.events = status.events.slice(0, 100); // Keep last 100 events
+            status.events = status.events.slice(0, 100);
             
-            // Update Daily History
             const existingIdx = status.history.findIndex(h => h.date === today);
             const summary = {
               date: today,
@@ -181,6 +175,10 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add docs/last-run.json docs/status.json
           git diff --cached --quiet || git commit -m "update status report and audit log"
+          
+          # FIX: Discard temporary changes to domains.json from the filter step
+          git restore config/domains.json
+          
           git pull --rebase origin main
           git push
 
