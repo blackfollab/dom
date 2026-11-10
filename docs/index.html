@@ -5,38 +5,62 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Crypto Sync Status</title>
   <style>
-    body { font-family: system-ui, sans-serif; max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
-    h1 { font-size: 1.4rem; }
-    .summary { display: flex; gap: 1.5rem; flex-wrap: wrap; margin: 1.5rem 0; }
-    .summary div { background: #f4f4f4; padding: 0.8rem 1.2rem; border-radius: 8px; }
-    .summary strong { display: block; font-size: 1.8rem; }
-    table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
-    th, td { text-align: left; padding: 0.5rem 0.8rem; border-bottom: 1px solid #eee; }
+    body { font-family: system-ui, sans-serif; max-width: 1000px; margin: 2rem auto; padding: 0 1rem; color: #333; }
+    h1 { font-size: 1.5rem; border-bottom: 2px solid #eee; padding-bottom: 0.5rem; }
+    h2 { font-size: 1.2rem; margin-top: 2.5rem; }
+    .summary { display: flex; gap: 1rem; flex-wrap: wrap; margin: 1.5rem 0; }
+    .summary div { background: #f8f9fa; border: 1px solid #e9ecef; padding: 0.8rem 1.2rem; border-radius: 8px; flex: 1; min-width: 100px; text-align: center; }
+    .summary strong { display: block; font-size: 1.8rem; margin-bottom: 0.2rem; }
+    table { width: 100%; border-collapse: collapse; margin-top: 1rem; background: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden; }
+    th, td { text-align: left; padding: 0.75rem 1rem; border-bottom: 1px solid #eee; font-size: 0.9rem; }
+    th { background: #f1f3f5; font-weight: 600; }
     .ok { color: #0a7a0a; font-weight: 600; }
     .noop { color: #666; }
     .failed { color: #c00; font-weight: 600; }
     .error { font-size: 0.85rem; color: #a00; }
-    .timestamp { color: #555; font-size: 0.9rem; margin-top: 2rem; }
+    .timestamp { color: #555; font-size: 0.85rem; margin-top: 2rem; text-align: right; }
+    .fixed-list { font-size: 0.85rem; color: #0066cc; }
   </style>
 </head>
 <body>
   <h1>🔄 Crypto Address Sync — Status</h1>
-  <p><a href="https://github.com/blackfollab/dom/actions">View runs on GitHub →</a></p>
+  <p><a href="https://github.com/blackfollab/dom/actions" target="_blank">View runs on GitHub →</a></p>
 
+  <!-- Live Summary -->
   <div id="summary" class="summary">Loading…</div>
+
+  <!-- Latest Domains -->
+  <h2>Latest Run Details</h2>
   <table id="domains">
     <thead>
-      <tr><th>Domain</th><th>Status</th><th>Details</th></tr>
+      <tr><th>Domain</th><th>Status</th><th>Details / Fixed</th></tr>
     </thead>
     <tbody></tbody>
   </table>
   <p id="timestamp" class="timestamp"></p>
 
+  <!-- Daily History -->
+  <h2>Daily Activity History</h2>
+  <table id="history">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Total</th>
+        <th>OK</th>
+        <th>Noop</th>
+        <th>Failed</th>
+        <th>Addresses Fixed</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
   <script>
     async function load() {
+      // 1. Load Latest Run
       try {
         const res = await fetch('last-run.json?cache=' + Date.now());
-        if (!res.ok) throw new Error('No last-run.json yet — wait for the first sync run.');
+        if (!res.ok) throw new Error('No last-run.json yet.');
         const data = await res.json();
 
         const s = data.summary;
@@ -52,20 +76,48 @@
         for (const d of data.domains) {
           const cls = d.status === 'ok' ? 'ok' : d.status === 'noop' ? 'noop' : 'failed';
           const details = d.changes && Object.keys(d.changes).length
-            ? Object.keys(d.changes).join(', ')
-            : d.error || '';
+            ? '<span class="fixed-list">Fixed: ' + Object.keys(d.changes).join(', ') + '</span>'
+            : (d.error ? '<span class="error">' + d.error + '</span>' : '');
           tbody.innerHTML += `
             <tr>
               <td>${d.name}</td>
               <td class="${cls}">${d.status}</td>
-              <td class="error">${details}</td>
+              <td>${details}</td>
             </tr>
           `;
         }
-
         document.getElementById('timestamp').textContent = 'Last run: ' + new Date(data.timestamp).toLocaleString();
       } catch (e) {
         document.getElementById('summary').textContent = e.message;
+      }
+
+      // 2. Load History
+      try {
+        const resHistory = await fetch('history.json?cache=' + Date.now());
+        if (!resHistory.ok) return; 
+        const historyData = await resHistory.json();
+        
+        const histTbody = document.querySelector('#history tbody');
+        histTbody.innerHTML = '';
+        
+        historyData.reverse().forEach(day => {
+          const fixed = day.fixed && day.fixed.length > 0 
+            ? '<span class="fixed-list">' + day.fixed.join(', ') + '</span>' 
+            : '<span class="noop">—</span>';
+            
+          histTbody.innerHTML += `
+            <tr>
+              <td><strong>${day.date}</strong></td>
+              <td>${day.total}</td>
+              <td class="ok">${day.ok}</td>
+              <td class="noop">${day.noop}</td>
+              <td class="failed">${day.failed}</td>
+              <td>${fixed}</td>
+            </tr>
+          `;
+        });
+      } catch (e) {
+        console.error("History load failed:", e);
       }
     }
     load();
