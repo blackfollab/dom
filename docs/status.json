@@ -1,17 +1,15 @@
 {
-  "lastRun": "2026-11-10T19:54:14.660Z",
+  "lastRun": "2026-11-10T20:01:38.227Z",
   "lastSuccess": "2026-11-10T18:31:39.209Z",
-  "lastFailure": "2026-11-10T19:54:14.660Z",
+  "lastFailure": "2026-11-10T20:01:38.227Z",
   "history": [
     {
       "date": "2026-11-10",
-      "ok": 1,
-      "noop": 13,
+      "ok": 0,
+      "noop": 14,
       "failed": 1,
       "total": 15,
-      "fixed": [
-        "venosmarket.com"
-      ]
+      "fixed": []
     }
   ]
 }
