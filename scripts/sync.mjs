@@ -614,7 +614,12 @@ async function main() {
 
   const desired = JSON.parse(await readFile(join(ROOT, 'config', 'addresses.json'), 'utf8'));
   const cfg     = JSON.parse(await readFile(join(ROOT, 'config', 'domains.json'), 'utf8'));
-  let domains = cfg.domains.map(d => ({ ...d, stateFilePath: join(ROOT, d.stateFile) }));
+
+  // Skip manualOnly domains unless explicitly targeted via --domain
+  let domains = cfg.domains
+    .filter(d => !d.manualOnly || (DOMAIN_FILTER && DOMAIN_FILTER.includes(d.name)))
+    .map(d => ({ ...d, stateFilePath: join(ROOT, d.stateFile) }));
+  const manualCount = cfg.domains.filter(d => d.manualOnly).length;
 
   if (DOMAIN_FILTER) {
     const wanted = new Set(DOMAIN_FILTER);
@@ -626,11 +631,10 @@ async function main() {
     }
   }
 
-  console.log(`[sync] mode=${DRY_RUN ? 'DRY-RUN' : 'LIVE'}${DIAGNOSTIC ? ' (DIAGNOSTIC)' : ''}  domains=${domains.length}/${cfg.domains.length}  addresses=${Object.keys(desired).length}`);
+  console.log(`[sync] mode=${DRY_RUN ? 'DRY-RUN' : 'LIVE'}${DIAGNOSTIC ? ' (DIAGNOSTIC)' : ''}  domains=${domains.length}/${cfg.domains.length}  manual=${manualCount}  addresses=${Object.keys(desired).length}`);
   if (DOMAIN_FILTER) console.log(`[sync] filter: ${DOMAIN_FILTER.join(', ')}`);
   console.log('');
 
-  // Edit A: headless when HEADLESS=true (set by GitHub Actions)
   const browser = await chromium.launch({ headless: process.env.HEADLESS === 'true' });
   const results = [];
   for (let i = 0; i < domains.length; i++) {
@@ -665,10 +669,10 @@ async function main() {
     await writeDiagnosticReport(results);
   }
 
-  // Edit B — last-run report for situation page
   const lastRun = {
     timestamp: new Date().toISOString(),
     mode: DRY_RUN ? 'dry-run' : 'live',
+    manualCount,
     summary: {
       total: results.length,
       ok: results.filter(r => r.status === 'ok').length,
@@ -694,11 +698,12 @@ async function main() {
     console.error(`Failed to write last-run report: ${e.message}`);
   }
 
-  // Edit B — GitHub Actions step summary (rendered on the run page)
   if (process.env.GITHUB_STEP_SUMMARY) {
     const s = lastRun.summary;
     const lines = [];
     lines.push(`## Crypto sync — ${lastRun.timestamp}`);
+    lines.push('');
+    lines.push(`**Manual domains (not run in cron):** ${manualCount}`);
     lines.push('');
     lines.push('| Metric | Count |');
     lines.push('|--------|-------|');

@@ -1,0 +1,234 @@
+{
+  "timestamp": "2026-11-10T02:53:20.314Z",
+  "mode": "live",
+  "summary": {
+    "total": 18,
+    "ok": 1,
+    "noop": 14,
+    "would_update": 0,
+    "no_address_fields": 0,
+    "failed": 3
+  },
+  "domains": [
+    {
+      "name": "shreembank.com",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [
+        "BTC",
+        "ETH",
+        "USDC",
+        "BNB",
+        "XRP"
+      ],
+      "error": null,
+      "durationMs": 2273
+    },
+    {
+      "name": "business.bet",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [
+        "BTC",
+        "ETH",
+        "BNB",
+        "XRP"
+      ],
+      "error": null,
+      "durationMs": 4683
+    },
+    {
+      "name": "venosmarket.com",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [
+        "USDC",
+        "BNB"
+      ],
+      "error": null,
+      "durationMs": 1233
+    },
+    {
+      "name": "account.agencybroker.ca",
+      "status": "ok",
+      "template": "standard",
+      "changes": {
+        "BTC": "bc1qjtdvx90dkt72zpwq5a86tpgh4tg6vhhcc7z7k6",
+        "ETH": "0x7871f15E8E01D2c27b9e2f3db6549A15a3f2f3AB",
+        "USDT": "TW1skYV12dJbmnQ5MMVgdch7sJUh8ixRwS"
+      },
+      "skippedInactive": [
+        "USDC",
+        "BNB"
+      ],
+      "error": null,
+      "durationMs": 2519
+    },
+    {
+      "name": "phoenix-miners.uk",
+      "status": "error",
+      "template": "unknown",
+      "changes": {},
+      "skippedInactive": [],
+      "error": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n",
+      "durationMs": 10548
+    },
+    {
+      "name": "partner.powerpire.com",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [],
+      "error": null,
+      "durationMs": 2087
+    },
+    {
+      "name": "account.novagrowthfund.com",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [
+        "ETH",
+        "USDC",
+        "BNB",
+        "XRP",
+        "USDT"
+      ],
+      "error": null,
+      "durationMs": 1310
+    },
+    {
+      "name": "vortexinvestcapital.online",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [
+        "USDC",
+        "BNB",
+        "USDT"
+      ],
+      "error": null,
+      "durationMs": 1972
+    },
+    {
+      "name": "elitewpinv.com",
+      "status": "error",
+      "template": "unknown",
+      "changes": {},
+      "skippedInactive": [],
+      "error": "page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://elitewpinv.com/admin/settings/gateway/payment-method/crypto-wallet\", waiting until \"domcontentloaded\"\n",
+      "durationMs": 60081
+    },
+    {
+      "name": "cypx.capital",
+      "status": "noop",
+      "template": "multinet",
+      "changes": {},
+      "skippedInactive": [
+        "ETH",
+        "USDC",
+        "BNB"
+      ],
+      "error": null,
+      "durationMs": 1807
+    },
+    {
+      "name": "novioncapital.app",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [
+        "ETH",
+        "USDC",
+        "BNB"
+      ],
+      "error": null,
+      "durationMs": 1382
+    },
+    {
+      "name": "vyrotrader.com",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [
+        "USDC",
+        "BNB"
+      ],
+      "error": null,
+      "durationMs": 1614
+    },
+    {
+      "name": "coinmatrfx.com",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [
+        "USDC",
+        "BNB"
+      ],
+      "error": null,
+      "durationMs": 2422
+    },
+    {
+      "name": "cynomining.co.uk",
+      "status": "error",
+      "template": "unknown",
+      "changes": {},
+      "skippedInactive": [],
+      "error": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n",
+      "durationMs": 10546
+    },
+    {
+      "name": "blocktellex.com",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [
+        "BTC",
+        "ETH",
+        "USDC",
+        "BNB",
+        "USDT"
+      ],
+      "error": null,
+      "durationMs": 2301
+    },
+    {
+      "name": "vicireitproperties.org",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [
+        "ETH",
+        "USDC",
+        "BNB"
+      ],
+      "error": null,
+      "durationMs": 7603
+    },
+    {
+      "name": "bitscrest.com",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [],
+      "error": null,
+      "durationMs": 2271
+    },
+    {
+      "name": "opulentdragons.com",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [
+        "USDC",
+        "BNB"
+      ],
+      "error": null,
+      "durationMs": 4304
+    }
+  ]
+}
