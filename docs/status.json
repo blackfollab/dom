@@ -1,18 +1,25 @@
 {
-  "lastRun": "2026-11-10T22:16:12.075Z",
-  "lastSuccess": "2026-11-10T22:16:12.075Z",
+  "lastRun": "2026-11-10T22:31:30.165Z",
+  "lastSuccess": "2026-11-10T22:31:30.165Z",
   "lastFailure": "2026-11-10T20:01:38.227Z",
   "history": [
     {
       "date": "2026-11-10",
-      "ok": 0,
-      "noop": 14,
+      "ok": 1,
+      "noop": 13,
       "failed": 0,
       "total": 14,
-      "fixedCount": 0
+      "fixedCount": 1
     }
   ],
-  "events": [],
+  "events": [
+    {
+      "time": "2026-11-10T22:31:30.165Z",
+      "type": "change",
+      "domain": "venosmarket.com",
+      "details": "Fixed: USDC"
+    }
+  ],
   "domainStats": {
     "shreembank.com": {
       "totalChanges": 0,
@@ -25,8 +32,8 @@
       "lastError": null
     },
     "venosmarket.com": {
-      "totalChanges": 0,
-      "lastChanged": null,
+      "totalChanges": 1,
+      "lastChanged": "2026-11-10T22:31:30.165Z",
       "lastError": null
     },
     "account.agencybroker.ca": {
