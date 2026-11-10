@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-11-10T19:19:41.949Z",
+  "timestamp": "2026-11-10T19:31:28.076Z",
   "mode": "live",
   "manualCount": 0,
   "summary": {
     "total": 15,
-    "ok": 0,
-    "noop": 11,
+    "ok": 1,
+    "noop": 13,
     "would_update": 0,
     "no_address_fields": 0,
-    "failed": 4
+    "failed": 1
   },
   "domains": [
     {
@@ -24,7 +24,7 @@
         "XRP"
       ],
       "error": null,
-      "durationMs": 2680
+      "durationMs": 2889
     },
     {
       "name": "business.bet",
@@ -38,16 +38,23 @@
         "XRP"
       ],
       "error": null,
-      "durationMs": 4300
+      "durationMs": 3404
     },
     {
       "name": "venosmarket.com",
-      "status": "error",
-      "template": "unknown",
-      "changes": {},
-      "skippedInactive": [],
-      "error": "page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://venosmarket.com/dashboard/admin/settings/gateway/payment-method/crypto-wallet\", waiting until \"domcontentloaded\"\n",
-      "durationMs": 60078
+      "status": "ok",
+      "template": "standard",
+      "changes": {
+        "BTC": "bc1qjtdvx90dkt72zpwq5a86tpgh4tg6vhhcc7z7k6",
+        "ETH": "0x7871f15E8E01D2c27b9e2f3db6549A15a3f2f3AB",
+        "USDT": "TW1skYV12dJbmnQ5MMVgdch7sJUh8ixRwS"
+      },
+      "skippedInactive": [
+        "USDC",
+        "BNB"
+      ],
+      "error": null,
+      "durationMs": 1777
     },
     {
       "name": "account.agencybroker.ca",
@@ -59,25 +66,31 @@
         "BNB"
       ],
       "error": null,
-      "durationMs": 906
+      "durationMs": 1239
     },
     {
       "name": "partner.powerpire.com",
-      "status": "error",
-      "template": "unknown",
+      "status": "noop",
+      "template": "standard",
       "changes": {},
       "skippedInactive": [],
-      "error": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n",
-      "durationMs": 10893
+      "error": null,
+      "durationMs": 1613
     },
     {
       "name": "account.novagrowthfund.com",
-      "status": "error",
-      "template": "unknown",
+      "status": "noop",
+      "template": "standard",
       "changes": {},
-      "skippedInactive": [],
-      "error": "page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://www.account.novagrowthfund.com/admin/settings/gateway/payment-method/crypto-wallet\", waiting until \"domcontentloaded\"\n",
-      "durationMs": 60091
+      "skippedInactive": [
+        "ETH",
+        "USDC",
+        "BNB",
+        "XRP",
+        "USDT"
+      ],
+      "error": null,
+      "durationMs": 1937
     },
     {
       "name": "vortexinvestcapital.online",
@@ -90,7 +103,7 @@
         "USDT"
       ],
       "error": null,
-      "durationMs": 1226
+      "durationMs": 2913
     },
     {
       "name": "cypx.capital",
@@ -103,7 +116,7 @@
         "BNB"
       ],
       "error": null,
-      "durationMs": 2869
+      "durationMs": 2949
     },
     {
       "name": "novioncapital.app",
@@ -116,7 +129,7 @@
         "BNB"
       ],
       "error": null,
-      "durationMs": 776
+      "durationMs": 1552
     },
     {
       "name": "vyrotrader.com",
@@ -128,7 +141,7 @@
         "BNB"
       ],
       "error": null,
-      "durationMs": 1002
+      "durationMs": 1507
     },
     {
       "name": "coinmatrfx.com",
@@ -140,7 +153,7 @@
         "BNB"
       ],
       "error": null,
-      "durationMs": 2509
+      "durationMs": 2194
     },
     {
       "name": "blocktellex.com",
@@ -155,7 +168,7 @@
         "USDT"
       ],
       "error": null,
-      "durationMs": 5260
+      "durationMs": 2848
     },
     {
       "name": "vicireitproperties.org",
@@ -163,8 +176,8 @@
       "template": "unknown",
       "changes": {},
       "skippedInactive": [],
-      "error": "page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://www.vicireitproperties.org/dash/public/admin/settings/gateway/payment-method/crypto-wallet\", waiting until \"domcontentloaded\"\n",
-      "durationMs": 60075
+      "error": "page.goto: net::ERR_SSL_PROTOCOL_ERROR at https://www.vicireitproperties.org/dash/public/admin/settings/gateway/payment-method/crypto-wallet\nCall log:\n  - navigating to \"https://www.vicireitproperties.org/dash/public/admin/settings/gateway/payment-method/crypto-wallet\", waiting until \"domcontentloaded\"\n",
+      "durationMs": 744
     },
     {
       "name": "bitscrest.com",
@@ -173,7 +186,7 @@
       "changes": {},
       "skippedInactive": [],
       "error": null,
-      "durationMs": 1587
+      "durationMs": 1956
     },
     {
       "name": "opulentdragons.com",
@@ -185,7 +198,7 @@
         "BNB"
       ],
       "error": null,
-      "durationMs": 4376
+      "durationMs": 4938
     }
   ]
 }
