@@ -14,6 +14,7 @@
       --primary: #3b82f6;
       --success: #10b981;
       --danger: #ef4444;
+      --warning: #f59e0b;
       --border: #334155;
     }
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 2rem 1rem; line-height: 1.5; }
@@ -35,12 +36,14 @@
     .settings-btn { background: transparent; border: 1px solid var(--border); color: var(--text-muted); padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-size: 0.85rem; }
     .settings-btn:hover { background: var(--card-bg); color: white; }
     
-    .dashboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem; }
+    .dashboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem; }
     .card { background: var(--card-bg); border: 1px solid var(--border); padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); position: relative; overflow: hidden; }
     .card h3 { margin: 0 0 0.5rem 0; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
     .card p { margin: 0; font-size: 1.2rem; font-weight: 700; }
-    .card.failure::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--danger); }
-    .card.success::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--success); }
+    .card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; }
+    .card.failure::before { background: var(--danger); }
+    .card.success::before { background: var(--success); }
+    .card.warning::before { background: var(--warning); }
 
     /* Tables */
     table { width: 100%; border-collapse: collapse; background: var(--card-bg); border-radius: 8px; overflow: hidden; margin-top: 1rem; border: 1px solid var(--border); }
@@ -48,22 +51,23 @@
     th { background: rgba(255,255,255,0.03); font-weight: 600; color: var(--text-muted); }
     tr:last-child td { border-bottom: none; }
     
-    /* Badges & Toggles */
+    /* Badges */
     .badge { display: inline-block; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; }
     .badge.ok { background: rgba(16, 185, 129, 0.2); color: var(--success); }
     .badge.noop { background: rgba(148, 163, 184, 0.2); color: var(--text-muted); }
     .badge.failed { background: rgba(239, 68, 68, 0.2); color: var(--danger); }
+    .badge.change { background: rgba(245, 158, 11, 0.2); color: var(--warning); }
     
-    .fixed-list { color: #60a5fa; }
+    .fixed-list { color: #60a5fa; font-weight: 500; }
     .error-msg { color: #f87171; }
     
     /* Switch */
-    .switch { position: relative; display: inline-block; width: 44px; height: 24px; }
+    .switch { position: relative; display: inline-block; width: 40px; height: 22px; }
     .switch input { opacity: 0; width: 0; height: 0; }
-    .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #475569; transition: .4s; border-radius: 24px; }
-    .slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
+    .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #475569; transition: .4s; border-radius: 22px; }
+    .slider:before { position: absolute; content: ""; height: 16px; width: 16px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
     input:checked + .slider { background-color: var(--primary); }
-    input:checked + .slider:before { transform: translateX(20px); }
+    input:checked + .slider:before { transform: translateX(18px); }
     input:disabled + .slider { opacity: 0.5; cursor: not-allowed; }
 
     /* Modals */
@@ -106,31 +110,35 @@
         <h3>Last Failure</h3>
         <p id="last-failure" style="color: var(--danger)">Never</p>
       </div>
+      <div class="card warning">
+        <h3>Total Fixes Today</h3>
+        <p id="total-fixes" style="color: var(--warning)">0</p>
+      </div>
     </div>
 
-    <h2>Domain Controls</h2>
+    <h2>Domain Controls & Stats</h2>
     <table id="domains">
       <thead>
-        <tr><th>Domain</th><th>Status</th><th>Active (Toggle)</th><th>Details / Fixed</th></tr>
+        <tr>
+          <th>Domain</th>
+          <th>Status</th>
+          <th>Active</th>
+          <th>Total Fixes</th>
+          <th>Last Changed</th>
+          <th>Details</th>
+        </tr>
       </thead>
       <tbody></tbody>
     </table>
 
-    <h2 style="margin-top: 3rem;">Error Log (Last 50)</h2>
-    <table id="error-log">
+    <h2 style="margin-top: 3rem;">Live Event Log (Audit Trail)</h2>
+    <table id="event-log">
       <thead>
-        <tr><th>Date & Time</th><th>Domain</th><th>Error Message</th></tr>
+        <tr><th>Date & Time</th><th>Domain</th><th>Event Type</th><th>Details</th></tr>
       </thead>
       <tbody></tbody>
     </table>
 
-    <h2 style="margin-top: 3rem;">Daily Activity History (Last 30 Days)</h2>
-    <table id="history">
-      <thead>
-        <tr><th>Date</th><th>Checked</th><th>OK</th><th>Failed</th><th>Addresses Changed</th></tr>
-      </thead>
-      <tbody></tbody>
-    </table>
   </div>
 
   <!-- SETTINGS MODAL -->
@@ -145,7 +153,6 @@
   </div>
 
   <script>
-    // --- PASSWORD GATE ---
     const CORRECT_PASSWORD = "0987654321";
     
     function checkPassword() {
@@ -172,7 +179,6 @@
       showDashboard();
     }
 
-    // --- SETTINGS / API ---
     function openSettings() { document.getElementById('settings-modal').style.display = 'flex'; document.getElementById('pat-input').value = localStorage.getItem('gh_pat') || ''; }
     function closeSettings() { document.getElementById('settings-modal').style.display = 'none'; }
     function saveSettings() { localStorage.setItem('gh_pat', document.getElementById('pat-input').value); closeSettings(); }
@@ -185,20 +191,17 @@
       const apiUrl = 'https://api.github.com/repos/blackfollab/dom/contents/config/disabled.json';
       
       try {
-        // 1. Get current file (to get SHA)
         const getRes = await fetch(apiUrl, { headers: { 'Authorization': `Bearer ${pat}` } });
         const fileData = await getRes.json();
         const currentList = JSON.parse(atob(fileData.content));
         
-        // 2. Modify List
         let newList;
         if (checkboxEl.checked) {
-          newList = currentList.filter(d => d !== domainName); // Enable
+          newList = currentList.filter(d => d !== domainName);
         } else {
-          newList = [...currentList, domainName]; // Disable
+          newList = [...currentList, domainName];
         }
         
-        // 3. Save File
         const putRes = await fetch(apiUrl, {
           method: 'PUT',
           headers: { 'Authorization': `Bearer ${pat}`, 'Content-Type': 'application/json' },
@@ -213,13 +216,12 @@
       } catch (err) {
         console.error(err);
         alert('Error updating toggle. Check your token permissions.');
-        checkboxEl.checked = !checkboxEl.checked; // revert
+        checkboxEl.checked = !checkboxEl.checked;
       } finally {
         checkboxEl.disabled = false;
       }
     }
 
-    // --- LOAD DATA ---
     function fmtDate(iso) {
       if (!iso) return 'Never';
       return new Date(iso).toLocaleString(undefined, { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
@@ -227,31 +229,25 @@
 
     async function loadData() {
       try {
-        // Load Last Run Details
         const resLast = await fetch('last-run.json?cache=' + Date.now());
         const lastRun = await resLast.json();
         
-        // Load Status (History & Errors)
         const resStatus = await fetch('status.json?cache=' + Date.now());
         const status = await resStatus.json();
         
-        // Load Disabled Config
-        const resDisabled = await fetch('../config/disabled.json?cache=' + Date.now()).catch(() => ({ ok: false }));
+        const resDisabled = await fetch('https://raw.githubusercontent.com/blackfollab/dom/main/config/disabled.json').catch(() => ({ ok: false }));
         let disabledList = [];
-        if (resDisabled.ok) {
-           disabledList = await resDisabled.json();
-        } else {
-           // Fallback if GitHub pages doesn't serve config folder, use a raw link
-           const raw = await fetch('https://raw.githubusercontent.com/blackfollab/dom/main/config/disabled.json').catch(()=>null);
-           if (raw && raw.ok) disabledList = await raw.json();
-        }
+        if (resDisabled.ok) disabledList = await resDisabled.json();
 
-        // 1. Render Top Cards
         document.getElementById('last-run').textContent = fmtDate(status.lastRun);
         document.getElementById('last-success').textContent = fmtDate(status.lastSuccess);
         document.getElementById('last-failure').textContent = status.lastFailure ? fmtDate(status.lastFailure) : 'Never';
+        
+        const todayStr = new Date().toISOString().split('T')[0];
+        const todayStats = status.history ? status.history.find(h => h.date === todayStr) : null;
+        document.getElementById('total-fixes').textContent = todayStats ? todayStats.fixedCount : 0;
 
-        // 2. Render Domains
+        // Render Domain Table
         const tbody = document.querySelector('#domains tbody');
         tbody.innerHTML = '';
         for (const d of lastRun.domains) {
@@ -260,6 +256,7 @@
             ? `<span class="fixed-list">✓ Fixed: ${Object.keys(d.changes).join(', ')}</span>`
             : (d.error ? `<span class="error-msg">✗ ${d.error}</span>` : '');
           
+          const stats = status.domainStats[d.name] || { totalChanges: 0, lastChanged: null };
           const isEnabled = !disabledList.includes(d.name);
           
           tbody.innerHTML += `
@@ -272,47 +269,32 @@
                   <span class="slider"></span>
                 </label>
               </td>
+              <td><strong>${stats.totalChanges}</strong></td>
+              <td style="color: var(--text-muted); font-size: 0.85rem;">${stats.lastChanged ? fmtDate(stats.lastChanged) : '—'}</td>
               <td>${details}</td>
             </tr>
           `;
         }
 
-        // 3. Render Error Log
-        const errTbody = document.querySelector('#error-log tbody');
-        errTbody.innerHTML = '';
-        if (status.errorLog && status.errorLog.length > 0) {
-          status.errorLog.forEach(e => {
-            errTbody.innerHTML += `
+        // Render Event Log
+        const eventTbody = document.querySelector('#event-log tbody');
+        eventTbody.innerHTML = '';
+        if (status.events && status.events.length > 0) {
+          status.events.forEach(e => {
+            const typeBadge = e.type === 'error' ? '<span class="badge failed">ERROR</span>' : '<span class="badge change">CHANGE</span>';
+            const detailColor = e.type === 'error' ? 'class="error-msg"' : 'class="fixed-list"';
+            
+            eventTbody.innerHTML += `
               <tr>
-                <td style="color: var(--text-muted); font-size: 0.8rem;">${fmtDate(e.time)}</td>
+                <td style="color: var(--text-muted); font-size: 0.85rem; white-space: nowrap;">${fmtDate(e.time)}</td>
                 <td><strong>${e.domain}</strong></td>
-                <td><span class="error-msg">${e.error}</span></td>
+                <td>${typeBadge}</td>
+                <td ${detailColor}>${e.details}</td>
               </tr>
             `;
           });
         } else {
-          errTbody.innerHTML = '<tr><td colspan="3" style="text-align:center; color:var(--text-muted);">No errors recorded yet.</td></tr>';
-        }
-
-        // 4. Render History
-        const histTbody = document.querySelector('#history tbody');
-        histTbody.innerHTML = '';
-        if (status.history && status.history.length > 0) {
-          status.history.slice().reverse().forEach(day => {
-            const fixed = day.fixed && day.fixed.length > 0 
-              ? `<span class="fixed-list">${day.fixed.join(', ')}</span>` 
-              : '<span style="color:var(--text-muted)">—</span>';
-            
-            histTbody.innerHTML += `
-              <tr>
-                <td><strong>${day.date}</strong></td>
-                <td>${day.total}</td>
-                <td><span class="badge ok">${day.ok}</span></td>
-                <td>${day.failed > 0 ? `<span class="badge failed">${day.failed}</span>` : '0'}</td>
-                <td>${fixed}</td>
-              </tr>
-            `;
-          });
+          eventTbody.innerHTML = '<tr><td colspan="4" style="text-align:center; color:var(--text-muted);">No events recorded yet.</td></tr>';
         }
         
       } catch (err) {
