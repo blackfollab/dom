@@ -1,17 +1,15 @@
 {
-  "lastRun": "2026-11-10T14:34:14.086Z",
-  "lastSuccess": "2026-11-10T14:34:14.086Z",
+  "lastRun": "2026-11-10T14:46:34.306Z",
+  "lastSuccess": "2026-11-10T14:46:34.306Z",
   "lastFailure": "2026-11-10T14:01:59.807Z",
   "history": [
     {
       "date": "2026-11-10",
-      "ok": 1,
-      "noop": 14,
+      "ok": 0,
+      "noop": 15,
       "failed": 0,
       "total": 15,
-      "fixed": [
-        "account.agencybroker.ca"
-      ]
+      "fixed": []
     }
   ]
 }
