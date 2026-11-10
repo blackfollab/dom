@@ -5,29 +5,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Crypto Sync Status</title>
   <style>
-    body { font-family: system-ui, sans-serif; max-width: 1000px; margin: 2rem auto; padding: 0 1rem; color: #333; }
-    h1 { font-size: 1.5rem; border-bottom: 2px solid #eee; padding-bottom: 0.5rem; }
-    h2 { font-size: 1.2rem; margin-top: 2.5rem; }
-    .summary { display: flex; gap: 1rem; flex-wrap: wrap; margin: 1.5rem 0; }
-    .summary div { background: #f8f9fa; border: 1px solid #e9ecef; padding: 0.8rem 1.2rem; border-radius: 8px; flex: 1; min-width: 100px; text-align: center; }
-    .summary strong { display: block; font-size: 1.8rem; margin-bottom: 0.2rem; }
-    table { width: 100%; border-collapse: collapse; margin-top: 1rem; background: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden; }
-    th, td { text-align: left; padding: 0.75rem 1rem; border-bottom: 1px solid #eee; font-size: 0.9rem; }
-    th { background: #f1f3f5; font-weight: 600; }
-    .ok { color: #0a7a0a; font-weight: 600; }
-    .noop { color: #666; }
-    .failed { color: #c00; font-weight: 600; }
-    .error { font-size: 0.85rem; color: #a00; }
-    .timestamp { color: #555; font-size: 0.85rem; margin-top: 2rem; text-align: right; }
-    .fixed-list { font-size: 0.85rem; color: #0066cc; }
+    body { font-family: system-ui, -apple-system, sans-serif; max-width: 1100px; margin: 2rem auto; padding: 0 1rem; color: #333; background: #f9fafb; }
+    h1 { font-size: 1.5rem; border-bottom: 2px solid #e5e7eb; padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
+    h2 { font-size: 1.2rem; margin-top: 2.5rem; color: #111827; }
+    
+    /* Dashboard Cards */
+    .dashboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+    .card { background: white; border: 1px solid #e5e7eb; padding: 1.2rem; border-radius: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+    .card h3 { margin: 0 0 0.5rem 0; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: #6b7280; }
+    .card p { margin: 0; font-size: 1.1rem; font-weight: 600; color: #111827; }
+    .card.failure { border-left: 4px solid #ef4444; }
+    .card.success { border-left: 4px solid #10b981; }
+
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden; margin-top: 1rem; }
+    th, td { text-align: left; padding: 0.75rem 1rem; border-bottom: 1px solid #e5e7eb; font-size: 0.9rem; }
+    th { background: #f3f4f6; font-weight: 600; color: #374151; }
+    
+    /* Badges */
+    .badge { display: inline-block; padding: 0.25rem 0.6rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; }
+    .badge.ok { background: #d1fae5; color: #065f46; }
+    .badge.noop { background: #f3f4f6; color: #374151; }
+    .badge.failed { background: #fee2e2; color: #991b1b; }
+    
+    .fixed-list { font-size: 0.85rem; color: #2563eb; font-weight: 500; }
+    .error-msg { font-size: 0.85rem; color: #dc2626; }
+    .timestamp { color: #6b7280; font-size: 0.85rem; text-align: right; margin-top: 1rem; }
   </style>
 </head>
 <body>
-  <h1>🔄 Crypto Address Sync — Status</h1>
-  <p><a href="https://github.com/blackfollab/dom/actions" target="_blank">View runs on GitHub →</a></p>
-
-  <!-- Live Summary -->
-  <div id="summary" class="summary">Loading…</div>
+  <h1>🔄 Crypto Address Sync — Dashboard</h1>
+  
+  <!-- Top Dashboard -->
+  <div class="dashboard">
+    <div class="card">
+      <h3>Last Run</h3>
+      <p id="last-run">Loading...</p>
+    </div>
+    <div class="card success">
+      <h3>Last Success</h3>
+      <p id="last-success">Loading...</p>
+    </div>
+    <div class="card failure">
+      <h3>Last Failure</h3>
+      <p id="last-failure">Never</p>
+    </div>
+  </div>
 
   <!-- Latest Domains -->
   <h2>Latest Run Details</h2>
@@ -37,89 +60,106 @@
     </thead>
     <tbody></tbody>
   </table>
-  <p id="timestamp" class="timestamp"></p>
+  <p id="last-run-timestamp" class="timestamp"></p>
 
   <!-- Daily History -->
-  <h2>Daily Activity History</h2>
+  <h2>Daily Activity History (Last 30 Days)</h2>
   <table id="history">
     <thead>
       <tr>
         <th>Date</th>
-        <th>Total</th>
-        <th>OK</th>
-        <th>Noop</th>
+        <th>Domains Checked</th>
+        <th>Fixed</th>
         <th>Failed</th>
-        <th>Addresses Fixed</th>
+        <th>Addresses Changed</th>
       </tr>
     </thead>
     <tbody></tbody>
   </table>
 
   <script>
+    // Format date nicely
+    function fmtDate(iso) {
+      if (!iso) return 'Never';
+      const d = new Date(iso);
+      return d.toLocaleString(undefined, { 
+        year: 'numeric', month: 'short', day: 'numeric', 
+        hour: '2-digit', minute: '2-digit' 
+      });
+    }
+
     async function load() {
-      // 1. Load Latest Run
+      // 1. Load Current Run Data
       try {
         const res = await fetch('last-run.json?cache=' + Date.now());
-        if (!res.ok) throw new Error('No last-run.json yet.');
+        if (!res.ok) throw new Error('No data yet');
         const data = await res.json();
 
-        const s = data.summary;
-        document.getElementById('summary').innerHTML = `
-          <div><strong class="ok">${s.ok}</strong> ok</div>
-          <div><strong class="noop">${s.noop}</strong> noop</div>
-          <div><strong class="failed">${s.failed}</strong> failed</div>
-          <div><strong>${data.manualCount ?? 0}</strong> manual</div>
-        `;
+        document.getElementById('last-run-timestamp').textContent = 'Last run: ' + fmtDate(data.timestamp);
 
         const tbody = document.querySelector('#domains tbody');
         tbody.innerHTML = '';
         for (const d of data.domains) {
-          const cls = d.status === 'ok' ? 'ok' : d.status === 'noop' ? 'noop' : 'failed';
+          const badgeClass = d.status === 'ok' ? 'ok' : d.status === 'noop' ? 'noop' : 'failed';
           const details = d.changes && Object.keys(d.changes).length
-            ? '<span class="fixed-list">Fixed: ' + Object.keys(d.changes).join(', ') + '</span>'
-            : (d.error ? '<span class="error">' + d.error + '</span>' : '');
+            ? '<span class="fixed-list">✓ Fixed: ' + Object.keys(d.changes).join(', ') + '</span>'
+            : (d.error ? '<span class="error-msg">✗ ' + d.error + '</span>' : '');
+          
           tbody.innerHTML += `
             <tr>
-              <td>${d.name}</td>
-              <td class="${cls}">${d.status}</td>
+              <td><strong>${d.name}</strong></td>
+              <td><span class="badge ${badgeClass}">${d.status}</span></td>
               <td>${details}</td>
             </tr>
           `;
         }
-        document.getElementById('timestamp').textContent = 'Last run: ' + new Date(data.timestamp).toLocaleString();
       } catch (e) {
-        document.getElementById('summary').textContent = e.message;
+        console.error(e);
       }
 
-      // 2. Load History
+      // 2. Load Status (Last Run/Success/Failure)
       try {
-        const resHistory = await fetch('history.json?cache=' + Date.now());
-        if (!resHistory.ok) return; 
-        const historyData = await resHistory.json();
-        
+        const resStatus = await fetch('status.json?cache=' + Date.now());
+        if (!resStatus.ok) throw new Error('No status yet');
+        const status = await resStatus.json();
+
+        document.getElementById('last-run').textContent = fmtDate(status.lastRun);
+        document.getElementById('last-success').textContent = fmtDate(status.lastSuccess);
+        document.getElementById('last-failure').textContent = status.lastFailure ? fmtDate(status.lastFailure) : 'Never';
+
+        if (!status.lastFailure) {
+           document.getElementById('last-failure').style.color = '#6b7280';
+        } else {
+           document.getElementById('last-failure').style.color = '#ef4444';
+        }
+
+        // 3. Load History
         const histTbody = document.querySelector('#history tbody');
         histTbody.innerHTML = '';
         
-        historyData.reverse().forEach(day => {
+        // Reverse so newest is at the top
+        const historyArr = status.history || [];
+        historyArr.reverse().forEach(day => {
           const fixed = day.fixed && day.fixed.length > 0 
             ? '<span class="fixed-list">' + day.fixed.join(', ') + '</span>' 
-            : '<span class="noop">—</span>';
+            : '<span style="color:#6b7280">—</span>';
             
           histTbody.innerHTML += `
             <tr>
               <td><strong>${day.date}</strong></td>
               <td>${day.total}</td>
-              <td class="ok">${day.ok}</td>
-              <td class="noop">${day.noop}</td>
-              <td class="failed">${day.failed}</td>
+              <td><span class="badge ok">${day.ok}</span></td>
+              <td>${day.failed > 0 ? `<span class="badge failed">${day.failed}</span>` : '0'}</td>
               <td>${fixed}</td>
             </tr>
           `;
         });
+
       } catch (e) {
-        console.error("History load failed:", e);
+        console.error(e);
       }
     }
+    
     load();
     setInterval(load, 30000); 
   </script>
