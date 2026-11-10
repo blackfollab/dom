@@ -80,3 +80,20 @@ jobs:
             state/screenshots/
           retention-days: 14
           if-no-files-found: ignore
+                - name: Publish status report to docs
+        if: always()
+        run: |
+          mkdir -p docs
+          if [ -f state/reports/last-run.json ]; then
+            cp state/reports/last-run.json docs/last-run.json
+          else
+            echo '{"timestamp":"'$(date -Iseconds)'","summary":{"total":0,"ok":0,"noop":0,"failed":0},"domains":[]}' > docs/last-run.json
+          fi
+      - name: Commit and push docs
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/last-run.json
+          git diff --cached --quiet || git commit -m "update status report"
+          git push

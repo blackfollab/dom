@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crypto Sync Status</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+    h1 { font-size: 1.4rem; }
+    .summary { display: flex; gap: 1.5rem; flex-wrap: wrap; margin: 1.5rem 0; }
+    .summary div { background: #f4f4f4; padding: 0.8rem 1.2rem; border-radius: 8px; }
+    .summary strong { display: block; font-size: 1.8rem; }
+    table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+    th, td { text-align: left; padding: 0.5rem 0.8rem; border-bottom: 1px solid #eee; }
+    .ok { color: #0a7a0a; font-weight: 600; }
+    .noop { color: #666; }
+    .failed { color: #c00; font-weight: 600; }
+    .error { font-size: 0.85rem; color: #a00; }
+    .timestamp { color: #555; font-size: 0.9rem; margin-top: 2rem; }
+  </style>
+</head>
+<body>
+  <h1>🔄 Crypto Address Sync — Status</h1>
+  <p><a href="https://github.com/blackfollab/dom/actions">View runs on GitHub →</a></p>
+
+  <div id="summary" class="summary">Loading…</div>
+  <table id="domains">
+    <thead>
+      <tr><th>Domain</th><th>Status</th><th>Details</th></tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <p id="timestamp" class="timestamp"></p>
+
+  <script>
+    async function load() {
+      try {
+        const res = await fetch('last-run.json?cache=' + Date.now());
+        if (!res.ok) throw new Error('No last-run.json yet — wait for the first sync run.');
+        const data = await res.json();
+
+        const s = data.summary;
+        document.getElementById('summary').innerHTML = `
+          <div><strong class="ok">${s.ok}</strong> ok</div>
+          <div><strong class="noop">${s.noop}</strong> noop</div>
+          <div><strong class="failed">${s.failed}</strong> failed</div>
+          <div><strong>${data.manualCount ?? 0}</strong> manual</div>
+        `;
+
+        const tbody = document.querySelector('#domains tbody');
+        tbody.innerHTML = '';
+        for (const d of data.domains) {
+          const cls = d.status === 'ok' ? 'ok' : d.status === 'noop' ? 'noop' : 'failed';
+          const details = d.changes && Object.keys(d.changes).length
+            ? Object.keys(d.changes).join(', ')
+            : d.error || '';
+          tbody.innerHTML += `
+            <tr>
+              <td>${d.name}</td>
+              <td class="${cls}">${d.status}</td>
+              <td class="error">${details}</td>
+            </tr>
+          `;
+        }
+
+        document.getElementById('timestamp').textContent = 'Last run: ' + new Date(data.timestamp).toLocaleString();
+      } catch (e) {
+        document.getElementById('summary').textContent = e.message;
+      }
+    }
+    load();
+    setInterval(load, 30000); // refresh every 30s
+  </script>
+</body>
+</html>
