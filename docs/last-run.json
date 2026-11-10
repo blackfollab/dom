@@ -1,0 +1,204 @@
+{
+  "timestamp": "2026-11-10T03:55:30.923Z",
+  "mode": "live",
+  "manualCount": 4,
+  "summary": {
+    "total": 15,
+    "ok": 0,
+    "noop": 15,
+    "would_update": 0,
+    "no_address_fields": 0,
+    "failed": 0
+  },
+  "domains": [
+    {
+      "name": "shreembank.com",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [
+        "BTC",
+        "ETH",
+        "USDC",
+        "BNB",
+        "XRP"
+      ],
+      "error": null,
+      "durationMs": 2672
+    },
+    {
+      "name": "business.bet",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [
+        "BTC",
+        "ETH",
+        "BNB",
+        "XRP"
+      ],
+      "error": null,
+      "durationMs": 6316
+    },
+    {
+      "name": "venosmarket.com",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [
+        "USDC",
+        "BNB"
+      ],
+      "error": null,
+      "durationMs": 1065
+    },
+    {
+      "name": "account.agencybroker.ca",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [
+        "USDC",
+        "BNB"
+      ],
+      "error": null,
+      "durationMs": 1761
+    },
+    {
+      "name": "partner.powerpire.com",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [],
+      "error": null,
+      "durationMs": 5002
+    },
+    {
+      "name": "account.novagrowthfund.com",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [
+        "ETH",
+        "USDC",
+        "BNB",
+        "XRP",
+        "USDT"
+      ],
+      "error": null,
+      "durationMs": 1737
+    },
+    {
+      "name": "vortexinvestcapital.online",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [
+        "USDC",
+        "BNB",
+        "USDT"
+      ],
+      "error": null,
+      "durationMs": 2137
+    },
+    {
+      "name": "cypx.capital",
+      "status": "noop",
+      "template": "multinet",
+      "changes": {},
+      "skippedInactive": [
+        "ETH",
+        "USDC",
+        "BNB"
+      ],
+      "error": null,
+      "durationMs": 2245
+    },
+    {
+      "name": "novioncapital.app",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [
+        "ETH",
+        "USDC",
+        "BNB"
+      ],
+      "error": null,
+      "durationMs": 1320
+    },
+    {
+      "name": "vyrotrader.com",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [
+        "USDC",
+        "BNB"
+      ],
+      "error": null,
+      "durationMs": 1611
+    },
+    {
+      "name": "coinmatrfx.com",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [
+        "USDC",
+        "BNB"
+      ],
+      "error": null,
+      "durationMs": 2475
+    },
+    {
+      "name": "blocktellex.com",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [
+        "BTC",
+        "ETH",
+        "USDC",
+        "BNB",
+        "USDT"
+      ],
+      "error": null,
+      "durationMs": 2911
+    },
+    {
+      "name": "vicireitproperties.org",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [
+        "ETH",
+        "USDC",
+        "BNB"
+      ],
+      "error": null,
+      "durationMs": 15126
+    },
+    {
+      "name": "bitscrest.com",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [],
+      "error": null,
+      "durationMs": 2115
+    },
+    {
+      "name": "opulentdragons.com",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [
+        "USDC",
+        "BNB"
+      ],
+      "error": null,
+      "durationMs": 2546
+    }
+  ]
+}
