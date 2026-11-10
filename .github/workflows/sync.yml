@@ -2,8 +2,9 @@ name: Crypto address sync
 
 on:
   schedule:
+    # Every 10 minutes (GitHub Actions cron uses UTC)
     - cron: '*/10 * * * *'
-  workflow_dispatch:
+  workflow_dispatch:  # Manual trigger from the GitHub Actions UI
 
 permissions:
   contents: write
@@ -91,26 +92,58 @@ jobs:
           else
             echo '{"timestamp":"'$(date -Iseconds)'","summary":{"total":0,"ok":0,"noop":0,"failed":0},"domains":[]}' > docs/last-run.json
           fi
+          
+          # Generate/Update history.json
+          node -e "
+            const fs = require('fs');
+            const lastRun = JSON.parse(fs.readFileSync('docs/last-run.json'));
+            let history = [];
+            try { history = JSON.parse(fs.readFileSync('docs/history.json')); } catch {}
+            
+            const today = new Date().toISOString().split('T')[0];
+            const existingIdx = history.findIndex(h => h.date === today);
+            
+            const summary = {
+              date: today,
+              timestamp: lastRun.timestamp,
+              ok: lastRun.summary.ok,
+              noop: lastRun.summary.noop,
+              failed: lastRun.summary.failed,
+              total: lastRun.summary.total,
+              fixed: lastRun.domains.filter(d => d.status === 'ok' && Object.keys(d.changes).length > 0).map(d => d.name)
+            };
+            
+            if (existingIdx > -1) {
+              history[existingIdx] = summary;
+            } else {
+              history.push(summary);
+            }
+            
+            // Keep only the last 30 days of history
+            history = history.slice(-30);
+            fs.writeFileSync('docs/history.json', JSON.stringify(history, null, 2));
+          "
 
       - name: Commit and push docs
         if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/last-run.json
-          git diff --cached --quiet || git commit -m "update status report"
+          git add docs/last-run.json docs/history.json
+          git diff --cached --quiet || git commit -m "update status report and history"
           git pull --rebase origin main
           git push
 
-      # NEW STEP: Deploy directly to GitHub Pages
       - name: Deploy to GitHub Pages
         if: always()
         uses: actions/configure-pages@v5
+
       - name: Upload Pages artifact
         if: always()
         uses: actions/upload-pages-artifact@v3
         with:
           path: docs
+
       - name: Deploy Pages
         if: always()
         id: deployment
