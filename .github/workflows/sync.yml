@@ -6,6 +6,9 @@ on:
     - cron: '*/10 * * * *'
   workflow_dispatch:  # Manual trigger from the GitHub Actions UI
 
+permissions:
+  contents: write
+
 concurrency:
   group: crypto-sync
   cancel-in-progress: false
@@ -80,7 +83,8 @@ jobs:
             state/screenshots/
           retention-days: 14
           if-no-files-found: ignore
-                - name: Publish status report to docs
+
+      - name: Publish status report to docs
         if: always()
         run: |
           mkdir -p docs
@@ -89,6 +93,7 @@ jobs:
           else
             echo '{"timestamp":"'$(date -Iseconds)'","summary":{"total":0,"ok":0,"noop":0,"failed":0},"domains":[]}' > docs/last-run.json
           fi
+
       - name: Commit and push docs
         if: always()
         run: |
