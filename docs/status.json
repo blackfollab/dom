@@ -1,15 +1,88 @@
 {
-  "lastRun": "2026-11-10T20:01:38.227Z",
-  "lastSuccess": "2026-11-10T18:31:39.209Z",
+  "lastRun": "2026-11-10T21:25:39.907Z",
+  "lastSuccess": "2026-11-10T21:25:39.907Z",
   "lastFailure": "2026-11-10T20:01:38.227Z",
   "history": [
     {
       "date": "2026-11-10",
       "ok": 0,
       "noop": 14,
-      "failed": 1,
-      "total": 15,
-      "fixed": []
+      "failed": 0,
+      "total": 14,
+      "fixedCount": 0
     }
-  ]
+  ],
+  "events": [],
+  "domainStats": {
+    "shreembank.com": {
+      "totalChanges": 0,
+      "lastChanged": null,
+      "lastError": null
+    },
+    "business.bet": {
+      "totalChanges": 0,
+      "lastChanged": null,
+      "lastError": null
+    },
+    "venosmarket.com": {
+      "totalChanges": 0,
+      "lastChanged": null,
+      "lastError": null
+    },
+    "account.agencybroker.ca": {
+      "totalChanges": 0,
+      "lastChanged": null,
+      "lastError": null
+    },
+    "partner.powerpire.com": {
+      "totalChanges": 0,
+      "lastChanged": null,
+      "lastError": null
+    },
+    "account.novagrowthfund.com": {
+      "totalChanges": 0,
+      "lastChanged": null,
+      "lastError": null
+    },
+    "vortexinvestcapital.online": {
+      "totalChanges": 0,
+      "lastChanged": null,
+      "lastError": null
+    },
+    "cypx.capital": {
+      "totalChanges": 0,
+      "lastChanged": null,
+      "lastError": null
+    },
+    "novioncapital.app": {
+      "totalChanges": 0,
+      "lastChanged": null,
+      "lastError": null
+    },
+    "vyrotrader.com": {
+      "totalChanges": 0,
+      "lastChanged": null,
+      "lastError": null
+    },
+    "coinmatrfx.com": {
+      "totalChanges": 0,
+      "lastChanged": null,
+      "lastError": null
+    },
+    "blocktellex.com": {
+      "totalChanges": 0,
+      "lastChanged": null,
+      "lastError": null
+    },
+    "bitscrest.com": {
+      "totalChanges": 0,
+      "lastChanged": null,
+      "lastError": null
+    },
+    "opulentdragons.com": {
+      "totalChanges": 0,
+      "lastChanged": null,
+      "lastError": null
+    }
+  }
 }
