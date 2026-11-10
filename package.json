@@ -1,0 +1,16 @@
+{
+  "name": "crypto-address-sync",
+  "version": "0.4.0",
+  "type": "module",
+  "scripts": {
+    "pilot":     "node scripts/pilot.mjs",
+    "sync":      "node scripts/sync.mjs",
+    "sync:dry":  "node scripts/sync.mjs --dry-run",
+    "sync:one":  "node scripts/sync.mjs --dry-run --domain",
+    "diagnose":  "node scripts/sync.mjs --diagnostic"
+  },
+  "dependencies": {
+    "playwright": "^1.49.0",
+    "dotenv": "^16.4.5"
+  }
+}
