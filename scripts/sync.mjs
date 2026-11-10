@@ -1,6 +1,6 @@
 import { chromium } from 'playwright';
 import { config as loadEnv } from 'dotenv';
-import { mkdir, access, readFile, writeFile } from 'fs/promises';
+import { mkdir, access, readFile, writeFile, appendFile } from 'fs/promises';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -181,12 +181,10 @@ async function waitForButtonReady(page, template, timeoutMs = 5000) {
   return sel;
 }
 
-// ---------- one submit attempt ----------
 async function attemptSubmit(page, domain, toChange, template) {
   const submitSel = template === 'multinet' ? '.submit-crypto-wallet' : '.submit-settings';
-  const domainRoot = new URL(domain.formUrl).origin;  // e.g. https://www.account.novagrowthfund.com
+  const domainRoot = new URL(domain.formUrl).origin;
 
-  // FIX 1: broaden the response matcher — any POST to this domain
   const responsePromise = page.waitForResponse(
     r => r.request().method() === 'POST' && r.url().startsWith(domainRoot),
     { timeout: 20000 }
@@ -301,7 +299,6 @@ async function attemptSubmit(page, domain, toChange, template) {
   return { detected: !!msg, text: msg, type, source, responseStatus };
 }
 
-// ---------- reload-verify: did the change actually persist? ----------
 async function verifyPersisted(page, domain, toChange) {
   try {
     await page.goto(domain.formUrl, { waitUntil: 'domcontentloaded', timeout: 15000 });
@@ -327,13 +324,10 @@ async function verifyPersisted(page, domain, toChange) {
   }
 }
 
-// ---------- click + verify with retry ----------
 async function clickAndVerify(page, domain, toChange, template) {
-  // Attempt 1
   let attempt = await attemptSubmit(page, domain, toChange, template);
   console.log(`[${domain.name}] Attempt 1: ${JSON.stringify(attempt)}`);
 
-  // FIX 2: on error or missing, always verify by reload
   if (attempt.type !== 'success') {
     console.log(`[${domain.name}] Attempt 1 not success — running reload-verify to check server state`);
     const verify = await verifyPersisted(page, domain, toChange);
@@ -341,16 +335,13 @@ async function clickAndVerify(page, domain, toChange, template) {
     if (verify.detected && verify.type === 'success') {
       return { ...verify, note: `ajax_said_${attempt.type || 'nothing'}_but_data_persisted` };
     }
-    // Reload-verify confirmed failure — try ONE more attempt
     if (attempt.type === 'error' || !attempt.detected) {
       console.log(`[${domain.name}] Retrying submit once...`);
-      // Reload the form fresh (in case CSRF or state needs refreshing)
       await page.goto(domain.formUrl, { waitUntil: 'domcontentloaded' });
       await page.waitForSelector('form[action*="crypto-wallet"]', { timeout: 10000 });
       const { active: activeNow } = await readFormState(page);
-      // Re-fill only the mismatched fields
       for (const [cur, { to, networkIndex }] of Object.entries(toChange)) {
-        if (!activeNow[cur]) continue;  // skip if coin no longer active
+        if (!activeNow[cur]) continue;
         await fillAddress(page, cur, to, networkIndex);
       }
       try {
@@ -359,7 +350,6 @@ async function clickAndVerify(page, domain, toChange, template) {
       attempt = await attemptSubmit(page, domain, toChange, template);
       console.log(`[${domain.name}] Attempt 2: ${JSON.stringify(attempt)}`);
       if (attempt.type === 'success') return attempt;
-      // Final reload-verify after retry
       const verify2 = await verifyPersisted(page, domain, toChange);
       console.log(`[${domain.name}] Reload-verify 2: ${JSON.stringify(verify2)}`);
       return verify2;
@@ -640,7 +630,8 @@ async function main() {
   if (DOMAIN_FILTER) console.log(`[sync] filter: ${DOMAIN_FILTER.join(', ')}`);
   console.log('');
 
-  const browser = await chromium.launch({ headless: false });
+  // Edit A: headless when HEADLESS=true (set by GitHub Actions)
+  const browser = await chromium.launch({ headless: process.env.HEADLESS === 'true' });
   const results = [];
   for (let i = 0; i < domains.length; i++) {
     const domain = domains[i];
@@ -672,6 +663,80 @@ async function main() {
   if (DIAGNOSTIC) {
     printDiagnosticTable(results);
     await writeDiagnosticReport(results);
+  }
+
+  // Edit B — last-run report for situation page
+  const lastRun = {
+    timestamp: new Date().toISOString(),
+    mode: DRY_RUN ? 'dry-run' : 'live',
+    summary: {
+      total: results.length,
+      ok: results.filter(r => r.status === 'ok').length,
+      noop: results.filter(r => r.status === 'noop').length,
+      would_update: results.filter(r => r.status === 'would_update').length,
+      no_address_fields: results.filter(r => r.status === 'no_address_fields').length,
+      failed: results.filter(r => !['ok', 'noop', 'would_update', 'no_address_fields'].includes(r.status)).length,
+    },
+    domains: results.map(r => ({
+      name: r.name,
+      status: r.status,
+      template: r.template,
+      changes: r.changes,
+      skippedInactive: r.skippedInactive,
+      error: r.error,
+      durationMs: r.durationMs,
+    })),
+  };
+  try {
+    await writeFile(join(REPORTS_DIR, 'last-run.json'), JSON.stringify(lastRun, null, 2));
+    console.log(`\n📄 Last-run report: state/reports/last-run.json`);
+  } catch (e) {
+    console.error(`Failed to write last-run report: ${e.message}`);
+  }
+
+  // Edit B — GitHub Actions step summary (rendered on the run page)
+  if (process.env.GITHUB_STEP_SUMMARY) {
+    const s = lastRun.summary;
+    const lines = [];
+    lines.push(`## Crypto sync — ${lastRun.timestamp}`);
+    lines.push('');
+    lines.push('| Metric | Count |');
+    lines.push('|--------|-------|');
+    lines.push(`| ✅ ok | ${s.ok} |`);
+    lines.push(`| ℹ️ noop | ${s.noop} |`);
+    lines.push(`| 🟡 would_update | ${s.would_update} |`);
+    lines.push(`| ⚪ no_address_fields | ${s.no_address_fields} |`);
+    lines.push(`| ❌ failed | ${s.failed} |`);
+    lines.push(`| **Total** | **${s.total}** |`);
+    lines.push('');
+    const failed = lastRun.domains.filter(d => !['ok', 'noop', 'would_update', 'no_address_fields'].includes(d.status));
+    if (failed.length > 0) {
+      lines.push('### ❌ Failed');
+      for (const d of failed) {
+        lines.push(`- **${d.name}** — \`${d.status}\`${d.error ? ` — ${d.error}` : ''}`);
+      }
+      lines.push('');
+    }
+    const changed = lastRun.domains.filter(d => d.status === 'ok' && Object.keys(d.changes).length > 0);
+    if (changed.length > 0) {
+      lines.push('### ✏️ Changed');
+      for (const d of changed) {
+        const list = Object.entries(d.changes).map(([c]) => c).join(', ');
+        lines.push(`- **${d.name}** — fixed: ${list}`);
+      }
+      lines.push('');
+    }
+    const skipped = lastRun.domains.filter(d => d.skippedInactive.length > 0);
+    if (skipped.length > 0) {
+      lines.push('### ⏭ Skipped inactive currencies');
+      for (const d of skipped) {
+        lines.push(`- **${d.name}** — ${d.skippedInactive.join(', ')}`);
+      }
+      lines.push('');
+    }
+    try {
+      await appendFile(process.env.GITHUB_STEP_SUMMARY, lines.join('\n') + '\n');
+    } catch {}
   }
 
   process.exit(results.some(r => !['ok', 'noop', 'would_update', 'no_address_fields'].includes(r.status)) ? 1 : 0);

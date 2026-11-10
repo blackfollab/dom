@@ -1,0 +1,82 @@
+name: Crypto address sync
+
+on:
+  schedule:
+    # Every 10 minutes (GitHub Actions cron uses UTC, minimum 5-min interval recommended)
+    - cron: '*/10 * * * *'
+  workflow_dispatch:  # Manual trigger from the GitHub Actions UI
+
+concurrency:
+  group: crypto-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        id: pw-cache
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+
+      - name: Install Playwright browsers (if not cached)
+        if: steps.pw-cache.outputs.cache-hit != 'true'
+        run: npx playwright install --with-deps chromium
+
+      - name: Install Playwright OS deps (if cached)
+        if: steps.pw-cache.outputs.cache-hit == 'true'
+        run: npx playwright install-deps chromium
+
+      - name: Restore cookies from secrets
+        env:
+          COOKIE_BITSCREST_COM:              ${{ secrets.COOKIE_BITSCREST_COM }}
+          COOKIE_VENOSMARKET_COM:            ${{ secrets.COOKIE_VENOSMARKET_COM }}
+          COOKIE_ACCOUNT_AGENCYBROKER_CA:    ${{ secrets.COOKIE_ACCOUNT_AGENCYBROKER_CA }}
+          COOKIE_PHOENIX_MINERS_UK:          ${{ secrets.COOKIE_PHOENIX_MINERS_UK }}
+          COOKIE_PARTNER_POWERPIRE_COM:      ${{ secrets.COOKIE_PARTNER_POWERPIRE_COM }}
+          COOKIE_ACCOUNT_NOVAGROWTHFUND_COM: ${{ secrets.COOKIE_ACCOUNT_NOVAGROWTHFUND_COM }}
+          COOKIE_VORTEXINVESTCAPITAL_ONLINE: ${{ secrets.COOKIE_VORTEXINVESTCAPITAL_ONLINE }}
+          COOKIE_ELITEWPINV_COM:             ${{ secrets.COOKIE_ELITEWPINV_COM }}
+          COOKIE_CYPX_CAPITAL:               ${{ secrets.COOKIE_CYPX_CAPITAL }}
+          COOKIE_NOVIONCAPITAL_APP:          ${{ secrets.COOKIE_NOVIONCAPITAL_APP }}
+          COOKIE_VYROTRADER_COM:             ${{ secrets.COOKIE_VYROTRADER_COM }}
+          COOKIE_COINMATRFX_COM:             ${{ secrets.COOKIE_COINMATRFX_COM }}
+          COOKIE_CYNOMINING_CO_UK:           ${{ secrets.COOKIE_CYNOMINING_CO_UK }}
+          COOKIE_BLOCKTELLEX_COM:            ${{ secrets.COOKIE_BLOCKTELLEX_COM }}
+          COOKIE_VICIREITPROPERTIES_ORG:     ${{ secrets.COOKIE_VICIREITPROPERTIES_ORG }}
+          COOKIE_OPULENTDRAGONS_COM:         ${{ secrets.COOKIE_OPULENTDRAGONS_COM }}
+        run: node scripts/restore-cookies.mjs
+
+      - name: Run sync
+        env:
+          HEADLESS: 'true'
+          LOGIN_EMAIL:    ${{ secrets.LOGIN_EMAIL }}
+          LOGIN_PASSWORD: ${{ secrets.LOGIN_PASSWORD }}
+        run: npm run sync
+
+      - name: Upload reports and screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sync-output-run-${{ github.run_number }}
+          path: |
+            state/reports/
+            state/screenshots/
+          retention-days: 14
+          if-no-files-found: ignore
