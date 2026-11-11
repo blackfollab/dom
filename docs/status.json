@@ -1,7 +1,7 @@
 {
-  "lastRun": "2026-11-11T05:01:30.277Z",
+  "lastRun": "2026-11-11T05:16:58.920Z",
   "lastSuccess": "2026-11-11T05:01:30.277Z",
-  "lastFailure": "2026-11-10T20:01:38.227Z",
+  "lastFailure": "2026-11-11T05:16:58.920Z",
   "history": [
     {
       "date": "2026-11-10",
@@ -14,13 +14,19 @@
     {
       "date": "2026-11-11",
       "ok": 0,
-      "noop": 14,
-      "failed": 0,
+      "noop": 13,
+      "failed": 1,
       "total": 14,
       "fixedCount": 0
     }
   ],
   "events": [
+    {
+      "time": "2026-11-11T05:16:58.920Z",
+      "type": "error",
+      "domain": "account.novagrowthfund.com",
+      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
+    },
     {
       "time": "2026-11-11T04:01:38.615Z",
       "type": "change",
@@ -87,7 +93,7 @@
     "account.novagrowthfund.com": {
       "totalChanges": 0,
       "lastChanged": null,
-      "lastError": null
+      "lastError": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
     },
     "vortexinvestcapital.online": {
       "totalChanges": 0,
