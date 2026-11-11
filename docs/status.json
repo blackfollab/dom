@@ -1,6 +1,6 @@
 {
-  "lastRun": "2026-11-11T20:17:15.660Z",
-  "lastSuccess": "2026-11-11T20:17:15.660Z",
+  "lastRun": "2026-11-11T21:01:47.310Z",
+  "lastSuccess": "2026-11-11T21:01:47.310Z",
   "lastFailure": "2026-11-11T17:03:15.203Z",
   "history": [
     {
@@ -13,14 +13,20 @@
     },
     {
       "date": "2026-11-11",
-      "ok": 0,
-      "noop": 14,
+      "ok": 1,
+      "noop": 13,
       "failed": 0,
       "total": 14,
-      "fixedCount": 0
+      "fixedCount": 1
     }
   ],
   "events": [
+    {
+      "time": "2026-11-11T21:01:47.310Z",
+      "type": "change",
+      "domain": "account.agencybroker.ca",
+      "details": "Fixed: BTC, ETH, USDT"
+    },
     {
       "time": "2026-11-11T19:16:46.283Z",
       "type": "change",
@@ -147,8 +153,8 @@
       "lastError": null
     },
     "account.agencybroker.ca": {
-      "totalChanges": 33,
-      "lastChanged": "2026-11-11T19:16:46.283Z",
+      "totalChanges": 36,
+      "lastChanged": "2026-11-11T21:01:47.310Z",
       "lastError": null
     },
     "partner.powerpire.com": {
