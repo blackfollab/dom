@@ -1,6 +1,6 @@
 {
-  "lastRun": "2026-11-11T09:31:37.178Z",
-  "lastSuccess": "2026-11-11T09:31:37.178Z",
+  "lastRun": "2026-11-11T09:46:23.528Z",
+  "lastSuccess": "2026-11-11T09:46:23.528Z",
   "lastFailure": "2026-11-11T05:16:58.920Z",
   "history": [
     {
@@ -13,14 +13,20 @@
     },
     {
       "date": "2026-11-11",
-      "ok": 0,
-      "noop": 14,
+      "ok": 1,
+      "noop": 13,
       "failed": 0,
       "total": 14,
-      "fixedCount": 0
+      "fixedCount": 1
     }
   ],
   "events": [
+    {
+      "time": "2026-11-11T09:46:23.528Z",
+      "type": "change",
+      "domain": "venosmarket.com",
+      "details": "Fixed: USDC"
+    },
     {
       "time": "2026-11-11T09:01:29.893Z",
       "type": "change",
@@ -100,8 +106,8 @@
       "lastError": null
     },
     "venosmarket.com": {
-      "totalChanges": 2,
-      "lastChanged": "2026-11-11T06:16:29.648Z",
+      "totalChanges": 3,
+      "lastChanged": "2026-11-11T09:46:23.528Z",
       "lastError": null
     },
     "account.agencybroker.ca": {
