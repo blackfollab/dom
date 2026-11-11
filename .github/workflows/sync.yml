@@ -16,7 +16,8 @@ concurrency:
 
 jobs:
   sync:
-    runs-on: ubuntu-latest
+    # FIX: Lock to a stable OS version to avoid GitHub's ubuntu-latest network bugs
+    runs-on: ubuntu-22.04
     timeout-minutes: 25
 
     steps:
@@ -174,22 +175,22 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           
-          # 1. Backup the newly generated JSON files
+          # Backup the newly generated JSON files
           cp docs/last-run.json /tmp/last-run.json
           cp docs/status.json /tmp/status.json
           
-          # 2. Discard any local changes and sync with the absolute latest remote
+          # Discard any local changes and sync with the absolute latest remote
           git restore config/domains.json
           git fetch origin main
           git reset --hard origin/main
           
-          # 3. Restore our new files and commit
+          # Restore our new files and commit
           cp /tmp/last-run.json docs/last-run.json
           cp /tmp/status.json docs/status.json
           git add docs/last-run.json docs/status.json
           git diff --cached --quiet || git commit -m "update status report and audit log"
           
-          # 4. Push (this will never conflict now)
+          # Push
           git push
 
       - name: Deploy to GitHub Pages
