@@ -1,1 +1,197 @@
-{"timestamp":"2026-11-11T16:48:53+00:00","summary":{"total":0,"ok":0,"noop":0,"failed":0},"domains":[]}
+{
+  "timestamp": "2026-11-11T16:55:44.492Z",
+  "mode": "live",
+  "manualCount": 0,
+  "summary": {
+    "total": 14,
+    "ok": 1,
+    "noop": 13,
+    "would_update": 0,
+    "no_address_fields": 0,
+    "failed": 0
+  },
+  "domains": [
+    {
+      "name": "shreembank.com",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [
+        "BTC",
+        "ETH",
+        "USDC",
+        "BNB",
+        "XRP"
+      ],
+      "error": null,
+      "durationMs": 2399
+    },
+    {
+      "name": "business.bet",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [
+        "BTC",
+        "ETH",
+        "BNB",
+        "XRP"
+      ],
+      "error": null,
+      "durationMs": 4167
+    },
+    {
+      "name": "venosmarket.com",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [
+        "BTC",
+        "ETH",
+        "BNB",
+        "USDT"
+      ],
+      "error": null,
+      "durationMs": 1001
+    },
+    {
+      "name": "account.agencybroker.ca",
+      "status": "ok",
+      "template": "standard",
+      "changes": {
+        "BTC": "bc1qjtdvx90dkt72zpwq5a86tpgh4tg6vhhcc7z7k6",
+        "ETH": "0x7871f15E8E01D2c27b9e2f3db6549A15a3f2f3AB",
+        "USDT": "TW1skYV12dJbmnQ5MMVgdch7sJUh8ixRwS"
+      },
+      "skippedInactive": [
+        "USDC",
+        "BNB"
+      ],
+      "error": null,
+      "durationMs": 3600
+    },
+    {
+      "name": "partner.powerpire.com",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [],
+      "error": null,
+      "durationMs": 2297
+    },
+    {
+      "name": "account.novagrowthfund.com",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [
+        "ETH",
+        "USDC",
+        "BNB",
+        "XRP",
+        "USDT"
+      ],
+      "error": null,
+      "durationMs": 2010
+    },
+    {
+      "name": "vortexinvestcapital.online",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [
+        "USDC",
+        "BNB",
+        "USDT"
+      ],
+      "error": null,
+      "durationMs": 2008
+    },
+    {
+      "name": "cypx.capital",
+      "status": "noop",
+      "template": "multinet",
+      "changes": {},
+      "skippedInactive": [
+        "ETH",
+        "USDC",
+        "BNB"
+      ],
+      "error": null,
+      "durationMs": 3050
+    },
+    {
+      "name": "novioncapital.app",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [
+        "ETH",
+        "USDC",
+        "BNB"
+      ],
+      "error": null,
+      "durationMs": 1476
+    },
+    {
+      "name": "vyrotrader.com",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [
+        "USDC",
+        "BNB"
+      ],
+      "error": null,
+      "durationMs": 1601
+    },
+    {
+      "name": "coinmatrfx.com",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [
+        "USDC",
+        "BNB"
+      ],
+      "error": null,
+      "durationMs": 2313
+    },
+    {
+      "name": "blocktellex.com",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [
+        "BTC",
+        "ETH",
+        "USDC",
+        "BNB",
+        "USDT"
+      ],
+      "error": null,
+      "durationMs": 2909
+    },
+    {
+      "name": "bitscrest.com",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [],
+      "error": null,
+      "durationMs": 1949
+    },
+    {
+      "name": "opulentdragons.com",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [
+        "USDC",
+        "BNB"
+      ],
+      "error": null,
+      "durationMs": 4422
+    }
+  ]
+}
