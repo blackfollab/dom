@@ -1,6 +1,6 @@
 {
-  "lastRun": "2026-11-12T14:48:10.167Z",
-  "lastSuccess": "2026-11-12T14:31:54.531Z",
+  "lastRun": "2026-11-12T15:01:41.264Z",
+  "lastSuccess": "2026-11-12T15:01:41.264Z",
   "lastFailure": "2026-11-12T14:48:10.167Z",
   "history": [
     {
@@ -21,14 +21,20 @@
     },
     {
       "date": "2026-11-12",
-      "ok": 0,
+      "ok": 1,
       "noop": 13,
-      "failed": 1,
+      "failed": 0,
       "total": 14,
-      "fixedCount": 0
+      "fixedCount": 1
     }
   ],
   "events": [
+    {
+      "time": "2026-11-12T15:01:41.264Z",
+      "type": "change",
+      "domain": "venosmarket.com",
+      "details": "Fixed: BTC, ETH, USDT"
+    },
     {
       "time": "2026-11-12T14:48:10.167Z",
       "type": "error",
@@ -204,8 +210,8 @@
       "lastError": null
     },
     "venosmarket.com": {
-      "totalChanges": 5,
-      "lastChanged": "2026-11-11T18:16:43.861Z",
+      "totalChanges": 8,
+      "lastChanged": "2026-11-12T15:01:41.264Z",
       "lastError": "page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://venosmarket.com/dashboard/admin/settings/gateway/payment-method/crypto-wallet\", waiting until \"domcontentloaded\"\n"
     },
     "account.agencybroker.ca": {
