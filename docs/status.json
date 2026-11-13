@@ -1,6 +1,6 @@
 {
-  "lastRun": "2026-11-13T07:01:52.335Z",
-  "lastSuccess": "2026-11-13T07:01:52.335Z",
+  "lastRun": "2026-11-13T07:16:49.084Z",
+  "lastSuccess": "2026-11-13T07:16:49.084Z",
   "lastFailure": "2026-11-13T03:01:55.202Z",
   "history": [
     {
@@ -29,14 +29,20 @@
     },
     {
       "date": "2026-11-13",
-      "ok": 0,
-      "noop": 14,
+      "ok": 1,
+      "noop": 13,
       "failed": 0,
       "total": 14,
-      "fixedCount": 0
+      "fixedCount": 1
     }
   ],
   "events": [
+    {
+      "time": "2026-11-13T07:16:49.084Z",
+      "type": "change",
+      "domain": "account.agencybroker.ca",
+      "details": "Fixed: BTC, ETH, USDT"
+    },
     {
       "time": "2026-11-13T05:47:04.206Z",
       "type": "change",
@@ -295,8 +301,8 @@
       "lastError": "page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://venosmarket.com/dashboard/admin/settings/gateway/payment-method/crypto-wallet\", waiting until \"domcontentloaded\"\n"
     },
     "account.agencybroker.ca": {
-      "totalChanges": 87,
-      "lastChanged": "2026-11-13T05:47:04.206Z",
+      "totalChanges": 90,
+      "lastChanged": "2026-11-13T07:16:49.084Z",
       "lastError": null
     },
     "partner.powerpire.com": {
