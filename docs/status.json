@@ -1,7 +1,7 @@
 {
-  "lastRun": "2026-11-13T02:46:47.043Z",
+  "lastRun": "2026-11-13T03:01:55.202Z",
   "lastSuccess": "2026-11-13T02:46:47.043Z",
-  "lastFailure": "2026-11-12T14:48:10.167Z",
+  "lastFailure": "2026-11-13T03:01:55.202Z",
   "history": [
     {
       "date": "2026-11-10",
@@ -29,14 +29,20 @@
     },
     {
       "date": "2026-11-13",
-      "ok": 1,
+      "ok": 0,
       "noop": 13,
-      "failed": 0,
+      "failed": 1,
       "total": 14,
-      "fixedCount": 1
+      "fixedCount": 0
     }
   ],
   "events": [
+    {
+      "time": "2026-11-13T03:01:55.202Z",
+      "type": "error",
+      "domain": "opulentdragons.com",
+      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
+    },
     {
       "time": "2026-11-13T02:46:47.043Z",
       "type": "change",
