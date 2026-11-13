@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-13T00:16:53.997Z",
+  "timestamp": "2026-11-13T00:31:40.126Z",
   "mode": "live",
   "manualCount": 0,
   "summary": {
@@ -24,7 +24,7 @@
         "XRP"
       ],
       "error": null,
-      "durationMs": 2865
+      "durationMs": 2367
     },
     {
       "name": "business.bet",
@@ -38,7 +38,7 @@
         "XRP"
       ],
       "error": null,
-      "durationMs": 4310
+      "durationMs": 3448
     },
     {
       "name": "venosmarket.com",
@@ -50,7 +50,7 @@
         "BNB"
       ],
       "error": null,
-      "durationMs": 951
+      "durationMs": 967
     },
     {
       "name": "account.agencybroker.ca",
@@ -62,7 +62,7 @@
         "BNB"
       ],
       "error": null,
-      "durationMs": 1541
+      "durationMs": 1520
     },
     {
       "name": "partner.powerpire.com",
@@ -71,7 +71,7 @@
       "changes": {},
       "skippedInactive": [],
       "error": null,
-      "durationMs": 1678
+      "durationMs": 1658
     },
     {
       "name": "account.novagrowthfund.com",
@@ -86,7 +86,7 @@
         "USDT"
       ],
       "error": null,
-      "durationMs": 3331
+      "durationMs": 1217
     },
     {
       "name": "vortexinvestcapital.online",
@@ -99,7 +99,7 @@
         "USDT"
       ],
       "error": null,
-      "durationMs": 1935
+      "durationMs": 1837
     },
     {
       "name": "cypx.capital",
@@ -112,7 +112,7 @@
         "BNB"
       ],
       "error": null,
-      "durationMs": 1876
+      "durationMs": 2278
     },
     {
       "name": "novioncapital.app",
@@ -137,7 +137,7 @@
         "BNB"
       ],
       "error": null,
-      "durationMs": 1545
+      "durationMs": 1443
     },
     {
       "name": "coinmatrfx.com",
@@ -149,7 +149,7 @@
         "BNB"
       ],
       "error": null,
-      "durationMs": 2499
+      "durationMs": 2981
     },
     {
       "name": "blocktellex.com",
@@ -164,7 +164,7 @@
         "USDT"
       ],
       "error": null,
-      "durationMs": 4633
+      "durationMs": 2356
     },
     {
       "name": "bitscrest.com",
@@ -173,7 +173,7 @@
       "changes": {},
       "skippedInactive": [],
       "error": null,
-      "durationMs": 2140
+      "durationMs": 3561
     },
     {
       "name": "opulentdragons.com",
@@ -185,7 +185,7 @@
         "BNB"
       ],
       "error": null,
-      "durationMs": 5633
+      "durationMs": 5530
     }
   ]
 }
