@@ -1,7 +1,7 @@
 {
-  "lastRun": "2026-11-13T16:16:30.355Z",
+  "lastRun": "2026-11-13T16:32:00.765Z",
   "lastSuccess": "2026-11-13T16:16:30.355Z",
-  "lastFailure": "2026-11-13T03:01:55.202Z",
+  "lastFailure": "2026-11-13T16:32:00.765Z",
   "history": [
     {
       "date": "2026-11-10",
@@ -30,13 +30,19 @@
     {
       "date": "2026-11-13",
       "ok": 0,
-      "noop": 14,
-      "failed": 0,
+      "noop": 13,
+      "failed": 1,
       "total": 14,
       "fixedCount": 0
     }
   ],
   "events": [
+    {
+      "time": "2026-11-13T16:32:00.765Z",
+      "type": "error",
+      "domain": "opulentdragons.com",
+      "details": "page.goto: net::ERR_CONNECTION_CLOSED at https://opulentdragons.com/account/admin/settings/gateway/payment-method/crypto-wallet\nCall log:\n  - navigating to \"https://opulentdragons.com/account/admin/settings/gateway/payment-method/crypto-wallet\", waiting until \"domcontentloaded\"\n"
+    },
     {
       "time": "2026-11-13T15:46:32.520Z",
       "type": "change",
@@ -395,7 +401,7 @@
     "opulentdragons.com": {
       "totalChanges": 0,
       "lastChanged": null,
-      "lastError": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
+      "lastError": "page.goto: net::ERR_CONNECTION_CLOSED at https://opulentdragons.com/account/admin/settings/gateway/payment-method/crypto-wallet\nCall log:\n  - navigating to \"https://opulentdragons.com/account/admin/settings/gateway/payment-method/crypto-wallet\", waiting until \"domcontentloaded\"\n"
     }
   }
 }
