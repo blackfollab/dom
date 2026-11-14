@@ -1,7 +1,7 @@
 {
-  "lastRun": "2026-11-14T05:01:23.025Z",
+  "lastRun": "2026-11-14T05:17:22.994Z",
   "lastSuccess": "2026-11-14T05:01:23.025Z",
-  "lastFailure": "2026-11-13T16:32:00.765Z",
+  "lastFailure": "2026-11-14T05:17:22.994Z",
   "history": [
     {
       "date": "2026-11-10",
@@ -38,13 +38,19 @@
     {
       "date": "2026-11-14",
       "ok": 0,
-      "noop": 13,
-      "failed": 0,
+      "noop": 12,
+      "failed": 1,
       "total": 13,
       "fixedCount": 0
     }
   ],
   "events": [
+    {
+      "time": "2026-11-14T05:17:22.994Z",
+      "type": "error",
+      "domain": "partner.powerpire.com",
+      "details": "page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://partner.powerpire.com/admin/settings/gateway/payment-method/crypto-wallet\", waiting until \"domcontentloaded\"\n"
+    },
     {
       "time": "2026-11-14T04:46:28.624Z",
       "type": "change",
@@ -436,7 +442,7 @@
     "partner.powerpire.com": {
       "totalChanges": 0,
       "lastChanged": null,
-      "lastError": null
+      "lastError": "page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://partner.powerpire.com/admin/settings/gateway/payment-method/crypto-wallet\", waiting until \"domcontentloaded\"\n"
     },
     "account.novagrowthfund.com": {
       "totalChanges": 0,
