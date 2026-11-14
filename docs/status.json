@@ -1,6 +1,6 @@
 {
-  "lastRun": "2026-11-14T01:16:31.207Z",
-  "lastSuccess": "2026-11-14T01:16:31.207Z",
+  "lastRun": "2026-11-14T01:31:52.457Z",
+  "lastSuccess": "2026-11-14T01:31:52.457Z",
   "lastFailure": "2026-11-13T16:32:00.765Z",
   "history": [
     {
@@ -37,14 +37,20 @@
     },
     {
       "date": "2026-11-14",
-      "ok": 0,
-      "noop": 13,
+      "ok": 1,
+      "noop": 12,
       "failed": 0,
       "total": 13,
-      "fixedCount": 0
+      "fixedCount": 1
     }
   ],
   "events": [
+    {
+      "time": "2026-11-14T01:31:52.457Z",
+      "type": "change",
+      "domain": "bitscrest.com",
+      "details": "Fixed: BTC, ETH, SOL, TRC20, USDC, BNB, XRP, USDT, DOGE"
+    },
     {
       "time": "2026-11-14T00:16:37.102Z",
       "type": "change",
@@ -444,8 +450,8 @@
       "lastError": null
     },
     "bitscrest.com": {
-      "totalChanges": 0,
-      "lastChanged": null,
+      "totalChanges": 9,
+      "lastChanged": "2026-11-14T01:31:52.457Z",
       "lastError": null
     },
     "opulentdragons.com": {
