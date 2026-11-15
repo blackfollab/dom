@@ -1,7 +1,7 @@
 {
-  "lastRun": "2026-11-15T05:01:31.852Z",
+  "lastRun": "2026-11-15T05:18:20.742Z",
   "lastSuccess": "2026-11-15T05:01:31.852Z",
-  "lastFailure": "2026-11-15T00:02:20.616Z",
+  "lastFailure": "2026-11-15T05:18:20.742Z",
   "history": [
     {
       "date": "2026-11-10",
@@ -46,13 +46,25 @@
     {
       "date": "2026-11-15",
       "ok": 0,
-      "noop": 13,
-      "failed": 0,
+      "noop": 11,
+      "failed": 2,
       "total": 13,
       "fixedCount": 0
     }
   ],
   "events": [
+    {
+      "time": "2026-11-15T05:18:20.742Z",
+      "type": "error",
+      "domain": "account.novagrowthfund.com",
+      "details": "page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://www.account.novagrowthfund.com/admin/settings/gateway/payment-method/crypto-wallet\", waiting until \"domcontentloaded\"\n"
+    },
+    {
+      "time": "2026-11-15T05:18:20.742Z",
+      "type": "error",
+      "domain": "venosmarket.com",
+      "details": "page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://venosmarket.com/dashboard/admin/settings/gateway/payment-method/crypto-wallet\", waiting until \"domcontentloaded\"\n"
+    },
     {
       "time": "2026-11-15T04:01:25.353Z",
       "type": "change",
