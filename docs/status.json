@@ -1,7 +1,7 @@
 {
-  "lastRun": "2026-11-14T23:46:30.737Z",
+  "lastRun": "2026-11-15T00:02:20.616Z",
   "lastSuccess": "2026-11-14T23:46:30.737Z",
-  "lastFailure": "2026-11-14T05:33:45.739Z",
+  "lastFailure": "2026-11-15T00:02:20.616Z",
   "history": [
     {
       "date": "2026-11-10",
@@ -42,9 +42,23 @@
       "failed": 0,
       "total": 13,
       "fixedCount": 0
+    },
+    {
+      "date": "2026-11-15",
+      "ok": 0,
+      "noop": 12,
+      "failed": 1,
+      "total": 13,
+      "fixedCount": 0
     }
   ],
   "events": [
+    {
+      "time": "2026-11-15T00:02:20.616Z",
+      "type": "error",
+      "domain": "account.novagrowthfund.com",
+      "details": "page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://www.account.novagrowthfund.com/admin/settings/gateway/payment-method/crypto-wallet\", waiting until \"domcontentloaded\"\n"
+    },
     {
       "time": "2026-11-14T23:16:26.723Z",
       "type": "change",
