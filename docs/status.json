@@ -1,7 +1,7 @@
 {
-  "lastRun": "2026-11-16T17:46:32.982Z",
+  "lastRun": "2026-11-16T18:02:17.572Z",
   "lastSuccess": "2026-11-16T17:46:32.982Z",
-  "lastFailure": "2026-11-15T05:18:20.742Z",
+  "lastFailure": "2026-11-16T18:02:17.572Z",
   "history": [
     {
       "date": "2026-11-10",
@@ -53,14 +53,26 @@
     },
     {
       "date": "2026-11-16",
-      "ok": 0,
-      "noop": 13,
-      "failed": 0,
+      "ok": 1,
+      "noop": 11,
+      "failed": 1,
       "total": 13,
-      "fixedCount": 0
+      "fixedCount": 1
     }
   ],
   "events": [
+    {
+      "time": "2026-11-16T18:02:17.572Z",
+      "type": "change",
+      "domain": "account.agencybroker.ca",
+      "details": "Fixed: BTC, ETH, USDT"
+    },
+    {
+      "time": "2026-11-16T18:02:17.572Z",
+      "type": "error",
+      "domain": "business.bet",
+      "details": "login_failed"
+    },
     {
       "time": "2026-11-16T13:16:37.026Z",
       "type": "change",
@@ -635,7 +647,7 @@
     "business.bet": {
       "totalChanges": 0,
       "lastChanged": null,
-      "lastError": null
+      "lastError": "login_failed"
     },
     "venosmarket.com": {
       "totalChanges": 11,
@@ -643,8 +655,8 @@
       "lastError": "page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://venosmarket.com/dashboard/admin/settings/gateway/payment-method/crypto-wallet\", waiting until \"domcontentloaded\"\n"
     },
     "account.agencybroker.ca": {
-      "totalChanges": 216,
-      "lastChanged": "2026-11-16T13:16:37.026Z",
+      "totalChanges": 219,
+      "lastChanged": "2026-11-16T18:02:17.572Z",
       "lastError": null
     },
     "partner.powerpire.com": {
