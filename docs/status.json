@@ -1,7 +1,7 @@
 {
-  "lastRun": "2026-11-17T05:01:33.239Z",
+  "lastRun": "2026-11-17T05:18:47.233Z",
   "lastSuccess": "2026-11-17T05:01:33.239Z",
-  "lastFailure": "2026-11-16T18:02:17.572Z",
+  "lastFailure": "2026-11-17T05:18:47.233Z",
   "history": [
     {
       "date": "2026-11-10",
@@ -61,14 +61,38 @@
     },
     {
       "date": "2026-11-17",
-      "ok": 0,
-      "noop": 13,
-      "failed": 0,
+      "ok": 1,
+      "noop": 9,
+      "failed": 3,
       "total": 13,
-      "fixedCount": 0
+      "fixedCount": 1
     }
   ],
   "events": [
+    {
+      "time": "2026-11-17T05:18:47.233Z",
+      "type": "error",
+      "domain": "account.novagrowthfund.com",
+      "details": "page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://www.account.novagrowthfund.com/admin/settings/gateway/payment-method/crypto-wallet\", waiting until \"domcontentloaded\"\n"
+    },
+    {
+      "time": "2026-11-17T05:18:47.233Z",
+      "type": "error",
+      "domain": "partner.powerpire.com",
+      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
+    },
+    {
+      "time": "2026-11-17T05:18:47.233Z",
+      "type": "change",
+      "domain": "account.agencybroker.ca",
+      "details": "Fixed: BTC, ETH, USDT"
+    },
+    {
+      "time": "2026-11-17T05:18:47.233Z",
+      "type": "error",
+      "domain": "venosmarket.com",
+      "details": "page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://venosmarket.com/dashboard/admin/settings/gateway/payment-method/crypto-wallet\", waiting until \"domcontentloaded\"\n"
+    },
     {
       "time": "2026-11-17T03:16:33.759Z",
       "type": "change",
@@ -644,30 +668,6 @@
       "type": "change",
       "domain": "account.agencybroker.ca",
       "details": "Fixed: BTC, ETH, USDT"
-    },
-    {
-      "time": "2026-11-11T03:16:19.572Z",
-      "type": "change",
-      "domain": "account.agencybroker.ca",
-      "details": "Fixed: BTC, ETH, USDT"
-    },
-    {
-      "time": "2026-11-11T01:16:30.396Z",
-      "type": "change",
-      "domain": "account.agencybroker.ca",
-      "details": "Fixed: BTC, ETH, USDT"
-    },
-    {
-      "time": "2026-11-10T23:16:31.067Z",
-      "type": "change",
-      "domain": "account.agencybroker.ca",
-      "details": "Fixed: BTC, ETH, USDT"
-    },
-    {
-      "time": "2026-11-10T23:01:34.237Z",
-      "type": "change",
-      "domain": "account.agencybroker.ca",
-      "details": "Fixed: BTC, ETH, USDT"
     }
   ],
   "domainStats": {
@@ -687,8 +687,8 @@
       "lastError": "page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://venosmarket.com/dashboard/admin/settings/gateway/payment-method/crypto-wallet\", waiting until \"domcontentloaded\"\n"
     },
     "account.agencybroker.ca": {
-      "totalChanges": 234,
-      "lastChanged": "2026-11-17T03:16:33.759Z",
+      "totalChanges": 237,
+      "lastChanged": "2026-11-17T05:18:47.233Z",
       "lastError": null
     },
     "partner.powerpire.com": {
