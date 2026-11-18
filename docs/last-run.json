@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-11-18T05:01:35.517Z",
+  "timestamp": "2026-11-18T05:17:15.815Z",
   "mode": "live",
   "manualCount": 0,
   "summary": {
     "total": 13,
     "ok": 0,
-    "noop": 13,
+    "noop": 8,
     "would_update": 0,
     "no_address_fields": 0,
-    "failed": 0
+    "failed": 5
   },
   "domains": [
     {
@@ -24,7 +24,7 @@
         "XRP"
       ],
       "error": null,
-      "durationMs": 2054
+      "durationMs": 2387
     },
     {
       "name": "business.bet",
@@ -38,7 +38,7 @@
         "XRP"
       ],
       "error": null,
-      "durationMs": 2927
+      "durationMs": 2739
     },
     {
       "name": "venosmarket.com",
@@ -52,19 +52,16 @@
         "USDT"
       ],
       "error": null,
-      "durationMs": 883
+      "durationMs": 987
     },
     {
       "name": "account.agencybroker.ca",
-      "status": "noop",
-      "template": "standard",
+      "status": "error",
+      "template": "unknown",
       "changes": {},
-      "skippedInactive": [
-        "USDC",
-        "BNB"
-      ],
-      "error": null,
-      "durationMs": 1672
+      "skippedInactive": [],
+      "error": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n",
+      "durationMs": 10528
     },
     {
       "name": "partner.powerpire.com",
@@ -73,7 +70,7 @@
       "changes": {},
       "skippedInactive": [],
       "error": null,
-      "durationMs": 1345
+      "durationMs": 1729
     },
     {
       "name": "account.novagrowthfund.com",
@@ -88,20 +85,16 @@
         "USDT"
       ],
       "error": null,
-      "durationMs": 1108
+      "durationMs": 1518
     },
     {
       "name": "vortexinvestcapital.online",
-      "status": "noop",
-      "template": "standard",
+      "status": "error",
+      "template": "unknown",
       "changes": {},
-      "skippedInactive": [
-        "USDC",
-        "BNB",
-        "USDT"
-      ],
-      "error": null,
-      "durationMs": 3684
+      "skippedInactive": [],
+      "error": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n",
+      "durationMs": 10542
     },
     {
       "name": "cypx.capital",
@@ -114,32 +107,25 @@
         "BNB"
       ],
       "error": null,
-      "durationMs": 3298
+      "durationMs": 2616
     },
     {
       "name": "novioncapital.app",
-      "status": "noop",
-      "template": "standard",
+      "status": "error",
+      "template": "unknown",
       "changes": {},
-      "skippedInactive": [
-        "ETH",
-        "USDC",
-        "BNB"
-      ],
-      "error": null,
-      "durationMs": 1431
+      "skippedInactive": [],
+      "error": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n",
+      "durationMs": 10896
     },
     {
       "name": "vyrotrader.com",
-      "status": "noop",
-      "template": "standard",
+      "status": "error",
+      "template": "unknown",
       "changes": {},
-      "skippedInactive": [
-        "USDC",
-        "BNB"
-      ],
-      "error": null,
-      "durationMs": 1719
+      "skippedInactive": [],
+      "error": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n",
+      "durationMs": 10550
     },
     {
       "name": "coinmatrfx.com",
@@ -151,7 +137,7 @@
         "BNB"
       ],
       "error": null,
-      "durationMs": 2671
+      "durationMs": 3654
     },
     {
       "name": "blocktellex.com",
@@ -166,16 +152,16 @@
         "USDT"
       ],
       "error": null,
-      "durationMs": 6549
+      "durationMs": 4776
     },
     {
       "name": "bitscrest.com",
-      "status": "noop",
-      "template": "standard",
+      "status": "error",
+      "template": "unknown",
       "changes": {},
       "skippedInactive": [],
-      "error": null,
-      "durationMs": 4814
+      "error": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n",
+      "durationMs": 10596
     }
   ]
 }
