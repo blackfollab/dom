@@ -1,7 +1,7 @@
 {
-  "lastRun": "2026-11-18T19:00:46.753Z",
-  "lastSuccess": "2026-11-18T18:46:34.227Z",
-  "lastFailure": "2026-11-18T19:00:46.753Z",
+  "lastRun": "2026-11-18T19:02:39.187Z",
+  "lastSuccess": "2026-11-18T19:02:39.187Z",
+  "lastFailure": "2026-11-18T15:17:10.442Z",
   "history": [
     {
       "date": "2026-11-10",
@@ -70,43 +70,13 @@
     {
       "date": "2026-11-18",
       "ok": 0,
-      "noop": 8,
-      "failed": 5,
+      "noop": 13,
+      "failed": 0,
       "total": 13,
       "fixedCount": 0
     }
   ],
   "events": [
-    {
-      "time": "2026-11-18T19:00:46.753Z",
-      "type": "error",
-      "domain": "bitscrest.com",
-      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
-    },
-    {
-      "time": "2026-11-18T19:00:46.753Z",
-      "type": "error",
-      "domain": "vyrotrader.com",
-      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
-    },
-    {
-      "time": "2026-11-18T19:00:46.753Z",
-      "type": "error",
-      "domain": "novioncapital.app",
-      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
-    },
-    {
-      "time": "2026-11-18T19:00:46.753Z",
-      "type": "error",
-      "domain": "vortexinvestcapital.online",
-      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
-    },
-    {
-      "time": "2026-11-18T19:00:46.753Z",
-      "type": "error",
-      "domain": "account.agencybroker.ca",
-      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n    - waiting for \"https://account.agencybroker.ca/admin/settings/gateway/payment-method/crypto-wallet\" navigation to finish...\n    - navigated to \"https://account.agencybroker.ca/admin/settings/gateway/payment-method/crypto-wallet\"\n"
-    },
     {
       "time": "2026-11-18T18:46:34.227Z",
       "type": "change",
@@ -676,6 +646,36 @@
       "type": "change",
       "domain": "account.agencybroker.ca",
       "details": "Fixed: BTC, ETH, USDT"
+    },
+    {
+      "time": "2026-11-13T07:16:49.084Z",
+      "type": "change",
+      "domain": "account.agencybroker.ca",
+      "details": "Fixed: BTC, ETH, USDT"
+    },
+    {
+      "time": "2026-11-13T05:47:04.206Z",
+      "type": "change",
+      "domain": "account.agencybroker.ca",
+      "details": "Fixed: BTC, ETH, USDT"
+    },
+    {
+      "time": "2026-11-13T04:01:38.585Z",
+      "type": "change",
+      "domain": "account.agencybroker.ca",
+      "details": "Fixed: BTC, ETH, USDT"
+    },
+    {
+      "time": "2026-11-13T03:01:55.202Z",
+      "type": "error",
+      "domain": "opulentdragons.com",
+      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
+    },
+    {
+      "time": "2026-11-13T02:46:47.043Z",
+      "type": "change",
+      "domain": "account.agencybroker.ca",
+      "details": "Fixed: BTC, ETH, USDT"
     }
   ],
   "domainStats": {
@@ -697,7 +697,7 @@
     "account.agencybroker.ca": {
       "totalChanges": 300,
       "lastChanged": "2026-11-18T18:46:34.227Z",
-      "lastError": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n    - waiting for \"https://account.agencybroker.ca/admin/settings/gateway/payment-method/crypto-wallet\" navigation to finish...\n    - navigated to \"https://account.agencybroker.ca/admin/settings/gateway/payment-method/crypto-wallet\"\n"
+      "lastError": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
     },
     "partner.powerpire.com": {
       "totalChanges": 0,
@@ -742,7 +742,7 @@
     "bitscrest.com": {
       "totalChanges": 9,
       "lastChanged": "2026-11-14T01:31:52.457Z",
-      "lastError": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
+      "lastError": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n    - waiting for \"https://bitscrest.com/user/admin/settings/gateway/payment-method/crypto-wallet\" navigation to finish...\n    - navigated to \"https://bitscrest.com/user/admin/settings/gateway/payment-method/crypto-wallet\"\n"
     },
     "opulentdragons.com": {
       "totalChanges": 0,
