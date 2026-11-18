@@ -1,7 +1,7 @@
 {
-  "lastRun": "2026-11-18T02:01:31.290Z",
+  "lastRun": "2026-11-18T02:16:32.180Z",
   "lastSuccess": "2026-11-18T02:01:31.290Z",
-  "lastFailure": "2026-11-17T05:18:47.233Z",
+  "lastFailure": "2026-11-18T02:16:32.180Z",
   "history": [
     {
       "date": "2026-11-10",
@@ -70,13 +70,19 @@
     {
       "date": "2026-11-18",
       "ok": 0,
-      "noop": 13,
-      "failed": 0,
+      "noop": 12,
+      "failed": 1,
       "total": 13,
       "fixedCount": 0
     }
   ],
   "events": [
+    {
+      "time": "2026-11-18T02:16:32.180Z",
+      "type": "error",
+      "domain": "novioncapital.app",
+      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
+    },
     {
       "time": "2026-11-18T00:31:38.681Z",
       "type": "change",
@@ -670,12 +676,6 @@
       "type": "change",
       "domain": "account.agencybroker.ca",
       "details": "Fixed: BTC, ETH, USDT"
-    },
-    {
-      "time": "2026-11-11T19:16:46.283Z",
-      "type": "change",
-      "domain": "account.agencybroker.ca",
-      "details": "Fixed: BTC, ETH, USDT"
     }
   ],
   "domainStats": {
@@ -722,7 +722,7 @@
     "novioncapital.app": {
       "totalChanges": 0,
       "lastChanged": null,
-      "lastError": null
+      "lastError": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
     },
     "vyrotrader.com": {
       "totalChanges": 0,
