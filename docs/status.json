@@ -1,6 +1,6 @@
 {
-  "lastRun": "2026-11-19T23:16:32.582Z",
-  "lastSuccess": "2026-11-19T23:16:32.582Z",
+  "lastRun": "2026-11-19T23:31:29.100Z",
+  "lastSuccess": "2026-11-19T23:31:29.100Z",
   "lastFailure": "2026-11-19T16:03:25.025Z",
   "history": [
     {
@@ -77,14 +77,20 @@
     },
     {
       "date": "2026-11-19",
-      "ok": 0,
-      "noop": 13,
+      "ok": 1,
+      "noop": 12,
       "failed": 0,
       "total": 13,
-      "fixedCount": 0
+      "fixedCount": 1
     }
   ],
   "events": [
+    {
+      "time": "2026-11-19T23:31:29.100Z",
+      "type": "change",
+      "domain": "vyrotrader.com",
+      "details": "Fixed: USDT"
+    },
     {
       "time": "2026-11-19T23:01:38.592Z",
       "type": "change",
@@ -678,12 +684,6 @@
       "type": "change",
       "domain": "bitscrest.com",
       "details": "Fixed: BTC, ETH, SOL, TRC20, USDC, BNB, XRP, USDT, DOGE"
-    },
-    {
-      "time": "2026-11-14T00:16:37.102Z",
-      "type": "change",
-      "domain": "account.agencybroker.ca",
-      "details": "Fixed: BTC, ETH, USDT"
     }
   ],
   "domainStats": {
@@ -733,8 +733,8 @@
       "lastError": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
     },
     "vyrotrader.com": {
-      "totalChanges": 0,
-      "lastChanged": null,
+      "totalChanges": 1,
+      "lastChanged": "2026-11-19T23:31:29.100Z",
       "lastError": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
     },
     "coinmatrfx.com": {
