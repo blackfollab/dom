@@ -1,1 +1,189 @@
-{"timestamp":"2026-11-19T12:19:47+00:00","summary":{"total":0,"ok":0,"noop":0,"failed":0},"domains":[]}
+{
+  "timestamp": "2026-11-19T12:33:46.613Z",
+  "mode": "live",
+  "manualCount": 0,
+  "summary": {
+    "total": 13,
+    "ok": 2,
+    "noop": 11,
+    "would_update": 0,
+    "no_address_fields": 0,
+    "failed": 0
+  },
+  "domains": [
+    {
+      "name": "shreembank.com",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [
+        "BTC",
+        "ETH",
+        "USDC",
+        "BNB",
+        "XRP"
+      ],
+      "error": null,
+      "durationMs": 2913
+    },
+    {
+      "name": "business.bet",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [
+        "BTC",
+        "ETH",
+        "BNB",
+        "XRP"
+      ],
+      "error": null,
+      "durationMs": 5397
+    },
+    {
+      "name": "venosmarket.com",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [
+        "BTC",
+        "ETH",
+        "USDC",
+        "USDT"
+      ],
+      "error": null,
+      "durationMs": 1231
+    },
+    {
+      "name": "account.agencybroker.ca",
+      "status": "ok",
+      "template": "standard",
+      "changes": {
+        "BTC": "bc1qjtdvx90dkt72zpwq5a86tpgh4tg6vhhcc7z7k6",
+        "ETH": "0x7871f15E8E01D2c27b9e2f3db6549A15a3f2f3AB",
+        "USDT": "TW1skYV12dJbmnQ5MMVgdch7sJUh8ixRwS"
+      },
+      "skippedInactive": [
+        "USDC",
+        "BNB"
+      ],
+      "error": null,
+      "durationMs": 3100
+    },
+    {
+      "name": "partner.powerpire.com",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [],
+      "error": null,
+      "durationMs": 2775
+    },
+    {
+      "name": "account.novagrowthfund.com",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [
+        "ETH",
+        "USDC",
+        "BNB",
+        "XRP",
+        "USDT"
+      ],
+      "error": null,
+      "durationMs": 2313
+    },
+    {
+      "name": "vortexinvestcapital.online",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [
+        "USDC",
+        "BNB",
+        "USDT"
+      ],
+      "error": null,
+      "durationMs": 2300
+    },
+    {
+      "name": "cypx.capital",
+      "status": "noop",
+      "template": "multinet",
+      "changes": {},
+      "skippedInactive": [
+        "ETH",
+        "USDC",
+        "BNB"
+      ],
+      "error": null,
+      "durationMs": 3464
+    },
+    {
+      "name": "novioncapital.app",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [
+        "ETH",
+        "USDC",
+        "BNB"
+      ],
+      "error": null,
+      "durationMs": 1788
+    },
+    {
+      "name": "vyrotrader.com",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [
+        "USDC",
+        "BNB"
+      ],
+      "error": null,
+      "durationMs": 1550
+    },
+    {
+      "name": "coinmatrfx.com",
+      "status": "ok",
+      "template": "standard",
+      "changes": {
+        "BTC": "bc1qjtdvx90dkt72zpwq5a86tpgh4tg6vhhcc7z7k6",
+        "ETH": "0x7871f15E8E01D2c27b9e2f3db6549A15a3f2f3AB",
+        "USDT": "TW1skYV12dJbmnQ5MMVgdch7sJUh8ixRwS"
+      },
+      "skippedInactive": [
+        "USDC",
+        "BNB"
+      ],
+      "error": null,
+      "durationMs": 3897
+    },
+    {
+      "name": "blocktellex.com",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [
+        "BTC",
+        "ETH",
+        "USDC",
+        "BNB",
+        "USDT"
+      ],
+      "error": null,
+      "durationMs": 3500
+    },
+    {
+      "name": "bitscrest.com",
+      "status": "noop",
+      "template": "standard",
+      "changes": {},
+      "skippedInactive": [],
+      "error": null,
+      "durationMs": 2133
+    }
+  ]
+}
