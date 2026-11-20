@@ -1,7 +1,7 @@
 {
-  "lastRun": "2026-11-20T22:16:46.780Z",
+  "lastRun": "2026-11-20T22:25:06.213Z",
   "lastSuccess": "2026-11-20T02:47:54.704Z",
-  "lastFailure": "2026-11-20T22:16:46.780Z",
+  "lastFailure": "2026-11-20T22:25:06.213Z",
   "history": [
     {
       "date": "2026-11-10",
@@ -85,14 +85,26 @@
     },
     {
       "date": "2026-11-20",
-      "ok": 2,
-      "noop": 10,
+      "ok": 1,
+      "noop": 11,
       "failed": 1,
       "total": 13,
-      "fixedCount": 2
+      "fixedCount": 1
     }
   ],
   "events": [
+    {
+      "time": "2026-11-20T22:25:06.213Z",
+      "type": "error",
+      "domain": "account.novagrowthfund.com",
+      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
+    },
+    {
+      "time": "2026-11-20T22:25:06.213Z",
+      "type": "change",
+      "domain": "shreembank.com",
+      "details": "Fixed: USDT"
+    },
     {
       "time": "2026-11-20T22:16:46.780Z",
       "type": "change",
@@ -680,24 +692,12 @@
       "type": "error",
       "domain": "account.novagrowthfund.com",
       "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
-    },
-    {
-      "time": "2026-11-20T07:47:21.785Z",
-      "type": "error",
-      "domain": "account.novagrowthfund.com",
-      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
-    },
-    {
-      "time": "2026-11-20T07:47:21.785Z",
-      "type": "error",
-      "domain": "business.bet",
-      "details": "page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://www.business.bet/admin/settings/gateway/payment-method/crypto-wallet\", waiting until \"domcontentloaded\"\n"
     }
   ],
   "domainStats": {
     "shreembank.com": {
-      "totalChanges": 20,
-      "lastChanged": "2026-11-20T22:16:46.780Z",
+      "totalChanges": 21,
+      "lastChanged": "2026-11-20T22:25:06.213Z",
       "lastError": null
     },
     "business.bet": {
