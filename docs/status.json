@@ -1,7 +1,7 @@
 {
-  "lastRun": "2026-11-20T14:17:45.375Z",
+  "lastRun": "2026-11-20T14:32:07.903Z",
   "lastSuccess": "2026-11-20T02:47:54.704Z",
-  "lastFailure": "2026-11-20T14:17:45.375Z",
+  "lastFailure": "2026-11-20T14:32:07.903Z",
   "history": [
     {
       "date": "2026-11-10",
@@ -85,14 +85,38 @@
     },
     {
       "date": "2026-11-20",
-      "ok": 2,
-      "noop": 10,
+      "ok": 3,
+      "noop": 9,
       "failed": 1,
       "total": 13,
-      "fixedCount": 2
+      "fixedCount": 3
     }
   ],
   "events": [
+    {
+      "time": "2026-11-20T14:32:07.903Z",
+      "type": "change",
+      "domain": "blocktellex.com",
+      "details": "Fixed: BTC"
+    },
+    {
+      "time": "2026-11-20T14:32:07.903Z",
+      "type": "change",
+      "domain": "vyrotrader.com",
+      "details": "Fixed: BTC, ETH, USDT"
+    },
+    {
+      "time": "2026-11-20T14:32:07.903Z",
+      "type": "error",
+      "domain": "account.novagrowthfund.com",
+      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
+    },
+    {
+      "time": "2026-11-20T14:32:07.903Z",
+      "type": "change",
+      "domain": "shreembank.com",
+      "details": "Fixed: USDT"
+    },
     {
       "time": "2026-11-20T14:17:45.375Z",
       "type": "change",
@@ -668,36 +692,12 @@
       "type": "error",
       "domain": "vortexinvestcapital.online",
       "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
-    },
-    {
-      "time": "2026-11-18T15:17:10.442Z",
-      "type": "error",
-      "domain": "account.agencybroker.ca",
-      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
-    },
-    {
-      "time": "2026-11-18T14:47:19.502Z",
-      "type": "change",
-      "domain": "account.agencybroker.ca",
-      "details": "Fixed: BTC, ETH, USDT"
-    },
-    {
-      "time": "2026-11-18T12:31:35.717Z",
-      "type": "change",
-      "domain": "account.agencybroker.ca",
-      "details": "Fixed: BTC, ETH, USDT"
-    },
-    {
-      "time": "2026-11-18T10:31:43.538Z",
-      "type": "change",
-      "domain": "account.agencybroker.ca",
-      "details": "Fixed: BTC, ETH, USDT"
     }
   ],
   "domainStats": {
     "shreembank.com": {
-      "totalChanges": 6,
-      "lastChanged": "2026-11-20T14:17:45.375Z",
+      "totalChanges": 7,
+      "lastChanged": "2026-11-20T14:32:07.903Z",
       "lastError": null
     },
     "business.bet": {
@@ -741,8 +741,8 @@
       "lastError": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
     },
     "vyrotrader.com": {
-      "totalChanges": 19,
-      "lastChanged": "2026-11-20T14:17:45.375Z",
+      "totalChanges": 22,
+      "lastChanged": "2026-11-20T14:32:07.903Z",
       "lastError": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
     },
     "coinmatrfx.com": {
@@ -751,8 +751,8 @@
       "lastError": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
     },
     "blocktellex.com": {
-      "totalChanges": 2,
-      "lastChanged": "2026-11-20T11:46:40.925Z",
+      "totalChanges": 3,
+      "lastChanged": "2026-11-20T14:32:07.903Z",
       "lastError": null
     },
     "bitscrest.com": {
