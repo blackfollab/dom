@@ -1,7 +1,7 @@
 {
-  "lastRun": "2026-11-20T10:16:34.392Z",
+  "lastRun": "2026-11-20T10:31:39.347Z",
   "lastSuccess": "2026-11-20T02:47:54.704Z",
-  "lastFailure": "2026-11-20T10:16:34.392Z",
+  "lastFailure": "2026-11-20T10:31:39.347Z",
   "history": [
     {
       "date": "2026-11-10",
@@ -85,14 +85,32 @@
     },
     {
       "date": "2026-11-20",
-      "ok": 0,
-      "noop": 12,
+      "ok": 2,
+      "noop": 10,
       "failed": 1,
       "total": 13,
-      "fixedCount": 0
+      "fixedCount": 2
     }
   ],
   "events": [
+    {
+      "time": "2026-11-20T10:31:39.347Z",
+      "type": "change",
+      "domain": "blocktellex.com",
+      "details": "Fixed: BTC"
+    },
+    {
+      "time": "2026-11-20T10:31:39.347Z",
+      "type": "error",
+      "domain": "account.novagrowthfund.com",
+      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
+    },
+    {
+      "time": "2026-11-20T10:31:39.347Z",
+      "type": "change",
+      "domain": "shreembank.com",
+      "details": "Fixed: USDT"
+    },
     {
       "time": "2026-11-20T10:16:34.392Z",
       "type": "error",
@@ -674,30 +692,12 @@
       "type": "change",
       "domain": "account.agencybroker.ca",
       "details": "Fixed: BTC, ETH, USDT"
-    },
-    {
-      "time": "2026-11-17T05:18:47.233Z",
-      "type": "error",
-      "domain": "venosmarket.com",
-      "details": "page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://venosmarket.com/dashboard/admin/settings/gateway/payment-method/crypto-wallet\", waiting until \"domcontentloaded\"\n"
-    },
-    {
-      "time": "2026-11-17T03:16:33.759Z",
-      "type": "change",
-      "domain": "account.agencybroker.ca",
-      "details": "Fixed: BTC, ETH, USDT"
-    },
-    {
-      "time": "2026-11-17T01:16:14.827Z",
-      "type": "change",
-      "domain": "account.agencybroker.ca",
-      "details": "Fixed: BTC, ETH, USDT"
     }
   ],
   "domainStats": {
     "shreembank.com": {
-      "totalChanges": 2,
-      "lastChanged": "2026-11-20T09:16:44.090Z",
+      "totalChanges": 3,
+      "lastChanged": "2026-11-20T10:31:39.347Z",
       "lastError": null
     },
     "business.bet": {
@@ -751,8 +751,8 @@
       "lastError": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
     },
     "blocktellex.com": {
-      "totalChanges": 0,
-      "lastChanged": null,
+      "totalChanges": 1,
+      "lastChanged": "2026-11-20T10:31:39.347Z",
       "lastError": null
     },
     "bitscrest.com": {
