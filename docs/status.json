@@ -1,7 +1,7 @@
 {
-  "lastRun": "2026-11-20T18:01:43.261Z",
+  "lastRun": "2026-11-20T18:16:43.420Z",
   "lastSuccess": "2026-11-20T02:47:54.704Z",
-  "lastFailure": "2026-11-20T18:01:43.261Z",
+  "lastFailure": "2026-11-20T18:16:43.420Z",
   "history": [
     {
       "date": "2026-11-10",
@@ -93,6 +93,12 @@
     }
   ],
   "events": [
+    {
+      "time": "2026-11-20T18:16:43.420Z",
+      "type": "error",
+      "domain": "account.novagrowthfund.com",
+      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
+    },
     {
       "time": "2026-11-20T18:01:43.261Z",
       "type": "error",
@@ -685,12 +691,6 @@
       "time": "2026-11-19T12:33:46.613Z",
       "type": "change",
       "domain": "coinmatrfx.com",
-      "details": "Fixed: BTC, ETH, USDT"
-    },
-    {
-      "time": "2026-11-19T12:33:46.613Z",
-      "type": "change",
-      "domain": "account.agencybroker.ca",
       "details": "Fixed: BTC, ETH, USDT"
     }
   ],
