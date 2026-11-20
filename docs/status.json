@@ -1,7 +1,7 @@
 {
-  "lastRun": "2026-11-20T13:18:35.148Z",
+  "lastRun": "2026-11-20T13:32:01.465Z",
   "lastSuccess": "2026-11-20T02:47:54.704Z",
-  "lastFailure": "2026-11-20T13:18:35.148Z",
+  "lastFailure": "2026-11-20T13:32:01.465Z",
   "history": [
     {
       "date": "2026-11-10",
@@ -85,14 +85,26 @@
     },
     {
       "date": "2026-11-20",
-      "ok": 0,
-      "noop": 12,
+      "ok": 1,
+      "noop": 11,
       "failed": 1,
       "total": 13,
-      "fixedCount": 0
+      "fixedCount": 1
     }
   ],
   "events": [
+    {
+      "time": "2026-11-20T13:32:01.465Z",
+      "type": "change",
+      "domain": "vyrotrader.com",
+      "details": "Fixed: BTC, ETH, USDT"
+    },
+    {
+      "time": "2026-11-20T13:32:01.465Z",
+      "type": "error",
+      "domain": "account.novagrowthfund.com",
+      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
+    },
     {
       "time": "2026-11-20T13:18:35.148Z",
       "type": "error",
@@ -680,18 +692,6 @@
       "type": "error",
       "domain": "account.agencybroker.ca",
       "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
-    },
-    {
-      "time": "2026-11-18T02:31:28.896Z",
-      "type": "change",
-      "domain": "account.agencybroker.ca",
-      "details": "Fixed: BTC, ETH, USDT"
-    },
-    {
-      "time": "2026-11-18T00:31:38.681Z",
-      "type": "change",
-      "domain": "account.agencybroker.ca",
-      "details": "Fixed: BTC, ETH, USDT"
     }
   ],
   "domainStats": {
@@ -741,8 +741,8 @@
       "lastError": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
     },
     "vyrotrader.com": {
-      "totalChanges": 10,
-      "lastChanged": "2026-11-20T00:16:35.071Z",
+      "totalChanges": 13,
+      "lastChanged": "2026-11-20T13:32:01.465Z",
       "lastError": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
     },
     "coinmatrfx.com": {
