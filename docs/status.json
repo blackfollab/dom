@@ -1,7 +1,7 @@
 {
-  "lastRun": "2026-11-20T22:01:44.337Z",
+  "lastRun": "2026-11-20T22:16:46.780Z",
   "lastSuccess": "2026-11-20T02:47:54.704Z",
-  "lastFailure": "2026-11-20T22:01:44.337Z",
+  "lastFailure": "2026-11-20T22:16:46.780Z",
   "history": [
     {
       "date": "2026-11-10",
@@ -93,6 +93,24 @@
     }
   ],
   "events": [
+    {
+      "time": "2026-11-20T22:16:46.780Z",
+      "type": "change",
+      "domain": "blocktellex.com",
+      "details": "Fixed: BTC"
+    },
+    {
+      "time": "2026-11-20T22:16:46.780Z",
+      "type": "error",
+      "domain": "account.novagrowthfund.com",
+      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
+    },
+    {
+      "time": "2026-11-20T22:16:46.780Z",
+      "type": "change",
+      "domain": "shreembank.com",
+      "details": "Fixed: USDT"
+    },
     {
       "time": "2026-11-20T22:01:44.337Z",
       "type": "change",
@@ -674,30 +692,12 @@
       "type": "error",
       "domain": "business.bet",
       "details": "page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://www.business.bet/admin/settings/gateway/payment-method/crypto-wallet\", waiting until \"domcontentloaded\"\n"
-    },
-    {
-      "time": "2026-11-20T07:31:42.062Z",
-      "type": "error",
-      "domain": "account.novagrowthfund.com",
-      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
-    },
-    {
-      "time": "2026-11-20T07:16:46.371Z",
-      "type": "error",
-      "domain": "account.novagrowthfund.com",
-      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
-    },
-    {
-      "time": "2026-11-20T07:01:47.108Z",
-      "type": "error",
-      "domain": "account.novagrowthfund.com",
-      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
     }
   ],
   "domainStats": {
     "shreembank.com": {
-      "totalChanges": 19,
-      "lastChanged": "2026-11-20T22:01:44.337Z",
+      "totalChanges": 20,
+      "lastChanged": "2026-11-20T22:16:46.780Z",
       "lastError": null
     },
     "business.bet": {
@@ -751,8 +751,8 @@
       "lastError": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
     },
     "blocktellex.com": {
-      "totalChanges": 9,
-      "lastChanged": "2026-11-20T22:01:44.337Z",
+      "totalChanges": 10,
+      "lastChanged": "2026-11-20T22:16:46.780Z",
       "lastError": null
     },
     "bitscrest.com": {
