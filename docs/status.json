@@ -1,7 +1,7 @@
 {
-  "lastRun": "2026-11-20T14:46:41.505Z",
+  "lastRun": "2026-11-20T15:01:51.133Z",
   "lastSuccess": "2026-11-20T02:47:54.704Z",
-  "lastFailure": "2026-11-20T14:46:41.505Z",
+  "lastFailure": "2026-11-20T15:01:51.133Z",
   "history": [
     {
       "date": "2026-11-10",
@@ -85,14 +85,26 @@
     },
     {
       "date": "2026-11-20",
-      "ok": 2,
-      "noop": 10,
+      "ok": 1,
+      "noop": 11,
       "failed": 1,
       "total": 13,
-      "fixedCount": 2
+      "fixedCount": 1
     }
   ],
   "events": [
+    {
+      "time": "2026-11-20T15:01:51.133Z",
+      "type": "error",
+      "domain": "account.novagrowthfund.com",
+      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
+    },
+    {
+      "time": "2026-11-20T15:01:51.133Z",
+      "type": "change",
+      "domain": "shreembank.com",
+      "details": "Fixed: USDT"
+    },
     {
       "time": "2026-11-20T14:46:41.505Z",
       "type": "change",
@@ -680,24 +692,12 @@
       "type": "change",
       "domain": "account.agencybroker.ca",
       "details": "Fixed: BTC, ETH, USDT"
-    },
-    {
-      "time": "2026-11-18T16:46:40.128Z",
-      "type": "change",
-      "domain": "account.agencybroker.ca",
-      "details": "Fixed: BTC, ETH, USDT"
-    },
-    {
-      "time": "2026-11-18T15:17:10.442Z",
-      "type": "error",
-      "domain": "bitscrest.com",
-      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n    - waiting for \"https://bitscrest.com/user/admin/settings/gateway/payment-method/crypto-wallet\" navigation to finish...\n    - navigated to \"https://bitscrest.com/user/admin/settings/gateway/payment-method/crypto-wallet\"\n"
     }
   ],
   "domainStats": {
     "shreembank.com": {
-      "totalChanges": 8,
-      "lastChanged": "2026-11-20T14:46:41.505Z",
+      "totalChanges": 9,
+      "lastChanged": "2026-11-20T15:01:51.133Z",
       "lastError": null
     },
     "business.bet": {
