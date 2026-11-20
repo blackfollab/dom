@@ -1,7 +1,7 @@
 {
-  "lastRun": "2026-11-20T08:01:45.106Z",
+  "lastRun": "2026-11-20T08:17:20.217Z",
   "lastSuccess": "2026-11-20T02:47:54.704Z",
-  "lastFailure": "2026-11-20T08:01:45.106Z",
+  "lastFailure": "2026-11-20T08:17:20.217Z",
   "history": [
     {
       "date": "2026-11-10",
@@ -86,13 +86,25 @@
     {
       "date": "2026-11-20",
       "ok": 0,
-      "noop": 12,
-      "failed": 1,
+      "noop": 11,
+      "failed": 2,
       "total": 13,
       "fixedCount": 0
     }
   ],
   "events": [
+    {
+      "time": "2026-11-20T08:17:20.217Z",
+      "type": "error",
+      "domain": "bitscrest.com",
+      "details": "page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://bitscrest.com/user/admin/settings/gateway/payment-method/crypto-wallet\", waiting until \"domcontentloaded\"\n"
+    },
+    {
+      "time": "2026-11-20T08:17:20.217Z",
+      "type": "error",
+      "domain": "account.novagrowthfund.com",
+      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
+    },
     {
       "time": "2026-11-20T08:01:45.106Z",
       "type": "error",
@@ -680,18 +692,6 @@
       "type": "change",
       "domain": "account.agencybroker.ca",
       "details": "Fixed: BTC, ETH, USDT"
-    },
-    {
-      "time": "2026-11-15T18:31:30.972Z",
-      "type": "change",
-      "domain": "account.agencybroker.ca",
-      "details": "Fixed: BTC, ETH, USDT"
-    },
-    {
-      "time": "2026-11-15T12:46:30.203Z",
-      "type": "change",
-      "domain": "account.agencybroker.ca",
-      "details": "Fixed: BTC, ETH, USDT"
     }
   ],
   "domainStats": {
@@ -758,7 +758,7 @@
     "bitscrest.com": {
       "totalChanges": 9,
       "lastChanged": "2026-11-14T01:31:52.457Z",
-      "lastError": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n    - waiting for \"https://bitscrest.com/user/admin/settings/gateway/payment-method/crypto-wallet\" navigation to finish...\n    - navigated to \"https://bitscrest.com/user/admin/settings/gateway/payment-method/crypto-wallet\"\n"
+      "lastError": "page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://bitscrest.com/user/admin/settings/gateway/payment-method/crypto-wallet\", waiting until \"domcontentloaded\"\n"
     },
     "opulentdragons.com": {
       "totalChanges": 0,
