@@ -1,7 +1,7 @@
 {
-  "lastRun": "2026-11-20T22:46:44.411Z",
+  "lastRun": "2026-11-20T23:01:42.095Z",
   "lastSuccess": "2026-11-20T02:47:54.704Z",
-  "lastFailure": "2026-11-20T22:46:44.411Z",
+  "lastFailure": "2026-11-20T23:01:42.095Z",
   "history": [
     {
       "date": "2026-11-10",
@@ -85,14 +85,32 @@
     },
     {
       "date": "2026-11-20",
-      "ok": 1,
-      "noop": 11,
+      "ok": 2,
+      "noop": 10,
       "failed": 1,
       "total": 13,
-      "fixedCount": 1
+      "fixedCount": 2
     }
   ],
   "events": [
+    {
+      "time": "2026-11-20T23:01:42.095Z",
+      "type": "error",
+      "domain": "account.novagrowthfund.com",
+      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
+    },
+    {
+      "time": "2026-11-20T23:01:42.095Z",
+      "type": "change",
+      "domain": "account.agencybroker.ca",
+      "details": "Fixed: BTC, ETH, USDT"
+    },
+    {
+      "time": "2026-11-20T23:01:42.095Z",
+      "type": "change",
+      "domain": "shreembank.com",
+      "details": "Fixed: USDT"
+    },
     {
       "time": "2026-11-20T22:46:44.411Z",
       "type": "error",
@@ -674,30 +692,12 @@
       "type": "change",
       "domain": "shreembank.com",
       "details": "Fixed: USDT"
-    },
-    {
-      "time": "2026-11-20T09:01:50.101Z",
-      "type": "error",
-      "domain": "account.novagrowthfund.com",
-      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
-    },
-    {
-      "time": "2026-11-20T09:01:50.101Z",
-      "type": "change",
-      "domain": "shreembank.com",
-      "details": "Fixed: USDT"
-    },
-    {
-      "time": "2026-11-20T08:46:38.177Z",
-      "type": "error",
-      "domain": "account.novagrowthfund.com",
-      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
     }
   ],
   "domainStats": {
     "shreembank.com": {
-      "totalChanges": 23,
-      "lastChanged": "2026-11-20T22:46:44.411Z",
+      "totalChanges": 24,
+      "lastChanged": "2026-11-20T23:01:42.095Z",
       "lastError": null
     },
     "business.bet": {
@@ -711,8 +711,8 @@
       "lastError": "page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://venosmarket.com/dashboard/admin/settings/gateway/payment-method/crypto-wallet\", waiting until \"domcontentloaded\"\n"
     },
     "account.agencybroker.ca": {
-      "totalChanges": 375,
-      "lastChanged": "2026-11-20T21:02:01.265Z",
+      "totalChanges": 378,
+      "lastChanged": "2026-11-20T23:01:42.095Z",
       "lastError": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
     },
     "partner.powerpire.com": {
