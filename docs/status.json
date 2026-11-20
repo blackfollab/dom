@@ -1,7 +1,7 @@
 {
-  "lastRun": "2026-11-20T19:16:48.870Z",
+  "lastRun": "2026-11-20T19:32:01.796Z",
   "lastSuccess": "2026-11-20T02:47:54.704Z",
-  "lastFailure": "2026-11-20T19:16:48.870Z",
+  "lastFailure": "2026-11-20T19:32:01.796Z",
   "history": [
     {
       "date": "2026-11-10",
@@ -93,6 +93,24 @@
     }
   ],
   "events": [
+    {
+      "time": "2026-11-20T19:32:01.796Z",
+      "type": "change",
+      "domain": "blocktellex.com",
+      "details": "Fixed: BTC"
+    },
+    {
+      "time": "2026-11-20T19:32:01.796Z",
+      "type": "error",
+      "domain": "account.novagrowthfund.com",
+      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
+    },
+    {
+      "time": "2026-11-20T19:32:01.796Z",
+      "type": "change",
+      "domain": "shreembank.com",
+      "details": "Fixed: USDT"
+    },
     {
       "time": "2026-11-20T19:16:48.870Z",
       "type": "change",
@@ -674,30 +692,12 @@
       "type": "change",
       "domain": "account.agencybroker.ca",
       "details": "Fixed: BTC, ETH, USDT"
-    },
-    {
-      "time": "2026-11-20T00:16:35.071Z",
-      "type": "change",
-      "domain": "vyrotrader.com",
-      "details": "Fixed: BTC, ETH, USDT"
-    },
-    {
-      "time": "2026-11-19T23:56:24.843Z",
-      "type": "change",
-      "domain": "vyrotrader.com",
-      "details": "Fixed: BTC, ETH, USDT"
-    },
-    {
-      "time": "2026-11-19T23:46:24.638Z",
-      "type": "change",
-      "domain": "vyrotrader.com",
-      "details": "Fixed: BTC, ETH, USDT"
     }
   ],
   "domainStats": {
     "shreembank.com": {
-      "totalChanges": 11,
-      "lastChanged": "2026-11-20T19:16:48.870Z",
+      "totalChanges": 12,
+      "lastChanged": "2026-11-20T19:32:01.796Z",
       "lastError": null
     },
     "business.bet": {
@@ -751,8 +751,8 @@
       "lastError": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
     },
     "blocktellex.com": {
-      "totalChanges": 6,
-      "lastChanged": "2026-11-20T19:16:48.870Z",
+      "totalChanges": 7,
+      "lastChanged": "2026-11-20T19:32:01.796Z",
       "lastError": null
     },
     "bitscrest.com": {
