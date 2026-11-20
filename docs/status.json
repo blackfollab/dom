@@ -1,7 +1,7 @@
 {
-  "lastRun": "2026-11-20T21:32:02.253Z",
+  "lastRun": "2026-11-20T21:48:33.864Z",
   "lastSuccess": "2026-11-20T02:47:54.704Z",
-  "lastFailure": "2026-11-20T21:32:02.253Z",
+  "lastFailure": "2026-11-20T21:48:33.864Z",
   "history": [
     {
       "date": "2026-11-10",
@@ -85,14 +85,38 @@
     },
     {
       "date": "2026-11-20",
-      "ok": 1,
-      "noop": 11,
-      "failed": 1,
+      "ok": 2,
+      "noop": 9,
+      "failed": 2,
       "total": 13,
-      "fixedCount": 1
+      "fixedCount": 2
     }
   ],
   "events": [
+    {
+      "time": "2026-11-20T21:48:33.864Z",
+      "type": "change",
+      "domain": "blocktellex.com",
+      "details": "Fixed: BTC"
+    },
+    {
+      "time": "2026-11-20T21:48:33.864Z",
+      "type": "error",
+      "domain": "account.novagrowthfund.com",
+      "details": "page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://www.account.novagrowthfund.com/admin/settings/gateway/payment-method/crypto-wallet\", waiting until \"domcontentloaded\"\n"
+    },
+    {
+      "time": "2026-11-20T21:48:33.864Z",
+      "type": "error",
+      "domain": "venosmarket.com",
+      "details": "page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://venosmarket.com/dashboard/admin/settings/gateway/payment-method/crypto-wallet\", waiting until \"domcontentloaded\"\n"
+    },
+    {
+      "time": "2026-11-20T21:48:33.864Z",
+      "type": "change",
+      "domain": "shreembank.com",
+      "details": "Fixed: USDT"
+    },
     {
       "time": "2026-11-20T21:32:02.253Z",
       "type": "error",
@@ -668,36 +692,12 @@
       "type": "error",
       "domain": "account.novagrowthfund.com",
       "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
-    },
-    {
-      "time": "2026-11-20T06:28:17.378Z",
-      "type": "change",
-      "domain": "account.agencybroker.ca",
-      "details": "Fixed: BTC, ETH, USDT"
-    },
-    {
-      "time": "2026-11-20T06:16:44.097Z",
-      "type": "error",
-      "domain": "account.novagrowthfund.com",
-      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
-    },
-    {
-      "time": "2026-11-20T06:01:37.889Z",
-      "type": "error",
-      "domain": "account.novagrowthfund.com",
-      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
-    },
-    {
-      "time": "2026-11-20T05:46:42.371Z",
-      "type": "error",
-      "domain": "account.novagrowthfund.com",
-      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
     }
   ],
   "domainStats": {
     "shreembank.com": {
-      "totalChanges": 17,
-      "lastChanged": "2026-11-20T21:32:02.253Z",
+      "totalChanges": 18,
+      "lastChanged": "2026-11-20T21:48:33.864Z",
       "lastError": null
     },
     "business.bet": {
@@ -708,7 +708,7 @@
     "venosmarket.com": {
       "totalChanges": 11,
       "lastChanged": "2026-11-15T03:31:22.211Z",
-      "lastError": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
+      "lastError": "page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://venosmarket.com/dashboard/admin/settings/gateway/payment-method/crypto-wallet\", waiting until \"domcontentloaded\"\n"
     },
     "account.agencybroker.ca": {
       "totalChanges": 375,
@@ -723,7 +723,7 @@
     "account.novagrowthfund.com": {
       "totalChanges": 0,
       "lastChanged": null,
-      "lastError": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
+      "lastError": "page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://www.account.novagrowthfund.com/admin/settings/gateway/payment-method/crypto-wallet\", waiting until \"domcontentloaded\"\n"
     },
     "vortexinvestcapital.online": {
       "totalChanges": 0,
@@ -751,8 +751,8 @@
       "lastError": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
     },
     "blocktellex.com": {
-      "totalChanges": 7,
-      "lastChanged": "2026-11-20T19:32:01.796Z",
+      "totalChanges": 8,
+      "lastChanged": "2026-11-20T21:48:33.864Z",
       "lastError": null
     },
     "bitscrest.com": {
