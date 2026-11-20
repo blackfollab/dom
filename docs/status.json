@@ -1,7 +1,7 @@
 {
-  "lastRun": "2026-11-20T15:31:59.600Z",
+  "lastRun": "2026-11-20T15:52:08.820Z",
   "lastSuccess": "2026-11-20T02:47:54.704Z",
-  "lastFailure": "2026-11-20T15:31:59.600Z",
+  "lastFailure": "2026-11-20T15:52:08.820Z",
   "history": [
     {
       "date": "2026-11-10",
@@ -85,14 +85,26 @@
     },
     {
       "date": "2026-11-20",
-      "ok": 0,
-      "noop": 12,
+      "ok": 1,
+      "noop": 11,
       "failed": 1,
       "total": 13,
-      "fixedCount": 0
+      "fixedCount": 1
     }
   ],
   "events": [
+    {
+      "time": "2026-11-20T15:52:08.820Z",
+      "type": "error",
+      "domain": "account.novagrowthfund.com",
+      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
+    },
+    {
+      "time": "2026-11-20T15:52:08.820Z",
+      "type": "change",
+      "domain": "account.agencybroker.ca",
+      "details": "Fixed: BTC, ETH, USDT"
+    },
     {
       "time": "2026-11-20T15:31:59.600Z",
       "type": "error",
@@ -680,18 +692,6 @@
       "type": "change",
       "domain": "account.agencybroker.ca",
       "details": "Fixed: BTC, ETH, USDT"
-    },
-    {
-      "time": "2026-11-18T23:01:58.905Z",
-      "type": "change",
-      "domain": "account.agencybroker.ca",
-      "details": "Fixed: BTC, ETH, USDT"
-    },
-    {
-      "time": "2026-11-18T21:01:43.689Z",
-      "type": "change",
-      "domain": "account.agencybroker.ca",
-      "details": "Fixed: BTC, ETH, USDT"
     }
   ],
   "domainStats": {
@@ -711,8 +711,8 @@
       "lastError": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
     },
     "account.agencybroker.ca": {
-      "totalChanges": 366,
-      "lastChanged": "2026-11-20T11:01:41.757Z",
+      "totalChanges": 369,
+      "lastChanged": "2026-11-20T15:52:08.820Z",
       "lastError": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
     },
     "partner.powerpire.com": {
