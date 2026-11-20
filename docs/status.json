@@ -1,7 +1,7 @@
 {
-  "lastRun": "2026-11-20T20:16:52.347Z",
+  "lastRun": "2026-11-20T20:31:46.374Z",
   "lastSuccess": "2026-11-20T02:47:54.704Z",
-  "lastFailure": "2026-11-20T20:16:52.347Z",
+  "lastFailure": "2026-11-20T20:31:46.374Z",
   "history": [
     {
       "date": "2026-11-10",
@@ -85,14 +85,32 @@
     },
     {
       "date": "2026-11-20",
-      "ok": 1,
-      "noop": 11,
+      "ok": 2,
+      "noop": 10,
       "failed": 1,
       "total": 13,
-      "fixedCount": 1
+      "fixedCount": 2
     }
   ],
   "events": [
+    {
+      "time": "2026-11-20T20:31:46.374Z",
+      "type": "error",
+      "domain": "account.novagrowthfund.com",
+      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
+    },
+    {
+      "time": "2026-11-20T20:31:46.374Z",
+      "type": "change",
+      "domain": "account.agencybroker.ca",
+      "details": "Fixed: BTC, ETH, USDT"
+    },
+    {
+      "time": "2026-11-20T20:31:46.374Z",
+      "type": "change",
+      "domain": "shreembank.com",
+      "details": "Fixed: USDT"
+    },
     {
       "time": "2026-11-20T20:16:52.347Z",
       "type": "error",
@@ -674,30 +692,12 @@
       "type": "error",
       "domain": "account.novagrowthfund.com",
       "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
-    },
-    {
-      "time": "2026-11-20T03:31:54.845Z",
-      "type": "error",
-      "domain": "account.novagrowthfund.com",
-      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
-    },
-    {
-      "time": "2026-11-20T03:17:01.209Z",
-      "type": "error",
-      "domain": "account.novagrowthfund.com",
-      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
-    },
-    {
-      "time": "2026-11-20T03:03:04.249Z",
-      "type": "error",
-      "domain": "account.novagrowthfund.com",
-      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
     }
   ],
   "domainStats": {
     "shreembank.com": {
-      "totalChanges": 13,
-      "lastChanged": "2026-11-20T20:16:52.347Z",
+      "totalChanges": 14,
+      "lastChanged": "2026-11-20T20:31:46.374Z",
       "lastError": null
     },
     "business.bet": {
@@ -711,8 +711,8 @@
       "lastError": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
     },
     "account.agencybroker.ca": {
-      "totalChanges": 369,
-      "lastChanged": "2026-11-20T18:32:20.815Z",
+      "totalChanges": 372,
+      "lastChanged": "2026-11-20T20:31:46.374Z",
       "lastError": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
     },
     "partner.powerpire.com": {
