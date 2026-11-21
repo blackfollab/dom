@@ -1,7 +1,7 @@
 {
-  "lastRun": "2026-11-21T13:01:43.737Z",
+  "lastRun": "2026-11-21T13:16:45.272Z",
   "lastSuccess": "2026-11-20T02:47:54.704Z",
-  "lastFailure": "2026-11-21T13:01:43.737Z",
+  "lastFailure": "2026-11-21T13:16:45.272Z",
   "history": [
     {
       "date": "2026-11-10",
@@ -101,6 +101,12 @@
     }
   ],
   "events": [
+    {
+      "time": "2026-11-21T13:16:45.272Z",
+      "type": "error",
+      "domain": "account.novagrowthfund.com",
+      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
+    },
     {
       "time": "2026-11-21T13:01:43.737Z",
       "type": "error",
@@ -694,12 +700,6 @@
       "type": "change",
       "domain": "blocktellex.com",
       "details": "Fixed: BTC"
-    },
-    {
-      "time": "2026-11-20T19:16:48.870Z",
-      "type": "error",
-      "domain": "account.novagrowthfund.com",
-      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
     }
   ],
   "domainStats": {
