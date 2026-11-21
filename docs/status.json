@@ -1,7 +1,7 @@
 {
-  "lastRun": "2026-11-21T04:01:45.313Z",
+  "lastRun": "2026-11-21T04:17:17.796Z",
   "lastSuccess": "2026-11-20T02:47:54.704Z",
-  "lastFailure": "2026-11-21T04:01:45.313Z",
+  "lastFailure": "2026-11-21T04:17:17.796Z",
   "history": [
     {
       "date": "2026-11-10",
@@ -101,6 +101,12 @@
     }
   ],
   "events": [
+    {
+      "time": "2026-11-21T04:17:17.796Z",
+      "type": "error",
+      "domain": "account.novagrowthfund.com",
+      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
+    },
     {
       "time": "2026-11-21T04:01:45.313Z",
       "type": "error",
@@ -694,12 +700,6 @@
       "type": "error",
       "domain": "account.novagrowthfund.com",
       "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
-    },
-    {
-      "time": "2026-11-20T13:32:01.465Z",
-      "type": "change",
-      "domain": "vyrotrader.com",
-      "details": "Fixed: BTC, ETH, USDT"
     }
   ],
   "domainStats": {
