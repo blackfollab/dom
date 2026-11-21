@@ -1,7 +1,7 @@
 {
-  "lastRun": "2026-11-21T13:31:45.077Z",
+  "lastRun": "2026-11-21T13:47:45.087Z",
   "lastSuccess": "2026-11-20T02:47:54.704Z",
-  "lastFailure": "2026-11-21T13:31:45.077Z",
+  "lastFailure": "2026-11-21T13:47:45.087Z",
   "history": [
     {
       "date": "2026-11-10",
@@ -94,13 +94,25 @@
     {
       "date": "2026-11-21",
       "ok": 0,
-      "noop": 12,
-      "failed": 1,
+      "noop": 11,
+      "failed": 2,
       "total": 13,
       "fixedCount": 0
     }
   ],
   "events": [
+    {
+      "time": "2026-11-21T13:47:45.087Z",
+      "type": "error",
+      "domain": "account.novagrowthfund.com",
+      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
+    },
+    {
+      "time": "2026-11-21T13:47:45.087Z",
+      "type": "error",
+      "domain": "business.bet",
+      "details": "login_failed"
+    },
     {
       "time": "2026-11-21T13:31:45.077Z",
       "type": "error",
@@ -688,18 +700,6 @@
       "type": "change",
       "domain": "blocktellex.com",
       "details": "Fixed: BTC"
-    },
-    {
-      "time": "2026-11-20T19:32:01.796Z",
-      "type": "error",
-      "domain": "account.novagrowthfund.com",
-      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
-    },
-    {
-      "time": "2026-11-20T19:32:01.796Z",
-      "type": "change",
-      "domain": "shreembank.com",
-      "details": "Fixed: USDT"
     }
   ],
   "domainStats": {
@@ -711,7 +711,7 @@
     "business.bet": {
       "totalChanges": 0,
       "lastChanged": null,
-      "lastError": "page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://www.business.bet/admin/settings/gateway/payment-method/crypto-wallet\", waiting until \"domcontentloaded\"\n"
+      "lastError": "login_failed"
     },
     "venosmarket.com": {
       "totalChanges": 11,
