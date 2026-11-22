@@ -1,7 +1,7 @@
 {
-  "lastRun": "2026-11-22T06:31:48.466Z",
+  "lastRun": "2026-11-22T06:46:46.674Z",
   "lastSuccess": "2026-11-20T02:47:54.704Z",
-  "lastFailure": "2026-11-22T06:31:48.466Z",
+  "lastFailure": "2026-11-22T06:46:46.674Z",
   "history": [
     {
       "date": "2026-11-10",
@@ -101,14 +101,20 @@
     },
     {
       "date": "2026-11-22",
-      "ok": 1,
-      "noop": 11,
+      "ok": 0,
+      "noop": 12,
       "failed": 1,
       "total": 13,
-      "fixedCount": 1
+      "fixedCount": 0
     }
   ],
   "events": [
+    {
+      "time": "2026-11-22T06:46:46.674Z",
+      "type": "error",
+      "domain": "account.novagrowthfund.com",
+      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
+    },
     {
       "time": "2026-11-22T06:31:48.466Z",
       "type": "error",
@@ -699,12 +705,6 @@
     },
     {
       "time": "2026-11-21T09:31:37.816Z",
-      "type": "error",
-      "domain": "account.novagrowthfund.com",
-      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
-    },
-    {
-      "time": "2026-11-21T09:16:36.142Z",
       "type": "error",
       "domain": "account.novagrowthfund.com",
       "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
