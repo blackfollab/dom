@@ -1,7 +1,7 @@
 {
-  "lastRun": "2026-11-23T16:02:15.523Z",
+  "lastRun": "2026-11-23T16:17:00.557Z",
   "lastSuccess": "2026-11-20T02:47:54.704Z",
-  "lastFailure": "2026-11-23T16:02:15.523Z",
+  "lastFailure": "2026-11-23T16:17:00.557Z",
   "history": [
     {
       "date": "2026-11-10",
@@ -109,14 +109,26 @@
     },
     {
       "date": "2026-11-23",
-      "ok": 1,
-      "noop": 10,
+      "ok": 0,
+      "noop": 11,
       "failed": 2,
       "total": 13,
-      "fixedCount": 1
+      "fixedCount": 0
     }
   ],
   "events": [
+    {
+      "time": "2026-11-23T16:17:00.557Z",
+      "type": "error",
+      "domain": "vortexinvestcapital.online",
+      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
+    },
+    {
+      "time": "2026-11-23T16:17:00.557Z",
+      "type": "error",
+      "domain": "account.novagrowthfund.com",
+      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
+    },
     {
       "time": "2026-11-23T16:02:15.523Z",
       "type": "error",
@@ -703,18 +715,6 @@
       "time": "2026-11-23T04:46:50.495Z",
       "type": "error",
       "domain": "vortexinvestcapital.online",
-      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
-    },
-    {
-      "time": "2026-11-23T04:46:50.495Z",
-      "type": "error",
-      "domain": "account.novagrowthfund.com",
-      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
-    },
-    {
-      "time": "2026-11-23T04:31:41.317Z",
-      "type": "error",
-      "domain": "account.novagrowthfund.com",
       "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
     }
   ],
