@@ -1,7 +1,7 @@
 {
-  "lastRun": "2026-11-23T05:31:45.624Z",
+  "lastRun": "2026-11-23T05:46:43.311Z",
   "lastSuccess": "2026-11-20T02:47:54.704Z",
-  "lastFailure": "2026-11-23T05:31:45.624Z",
+  "lastFailure": "2026-11-23T05:46:43.311Z",
   "history": [
     {
       "date": "2026-11-10",
@@ -109,14 +109,26 @@
     },
     {
       "date": "2026-11-23",
-      "ok": 1,
-      "noop": 10,
+      "ok": 0,
+      "noop": 11,
       "failed": 2,
       "total": 13,
-      "fixedCount": 1
+      "fixedCount": 0
     }
   ],
   "events": [
+    {
+      "time": "2026-11-23T05:46:43.311Z",
+      "type": "error",
+      "domain": "vortexinvestcapital.online",
+      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
+    },
+    {
+      "time": "2026-11-23T05:46:43.311Z",
+      "type": "error",
+      "domain": "account.novagrowthfund.com",
+      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
+    },
     {
       "time": "2026-11-23T05:31:45.624Z",
       "type": "error",
@@ -701,18 +713,6 @@
     },
     {
       "time": "2026-11-22T09:46:45.806Z",
-      "type": "error",
-      "domain": "account.novagrowthfund.com",
-      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
-    },
-    {
-      "time": "2026-11-22T09:31:41.801Z",
-      "type": "error",
-      "domain": "account.novagrowthfund.com",
-      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
-    },
-    {
-      "time": "2026-11-22T09:16:39.807Z",
       "type": "error",
       "domain": "account.novagrowthfund.com",
       "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
