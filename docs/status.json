@@ -1,7 +1,7 @@
 {
-  "lastRun": "2026-11-26T11:02:03.542Z",
+  "lastRun": "2026-11-26T11:16:37.060Z",
   "lastSuccess": "2026-11-20T02:47:54.704Z",
-  "lastFailure": "2026-11-26T11:02:03.542Z",
+  "lastFailure": "2026-11-26T11:16:37.060Z",
   "history": [
     {
       "date": "2026-11-10",
@@ -133,15 +133,27 @@
     },
     {
       "date": "2026-11-26",
-      "ok": 1,
-      "noop": 10,
+      "ok": 0,
+      "noop": 11,
       "failed": 2,
       "total": 13,
-      "fixedCount": 1
+      "fixedCount": 0
     }
   ],
   "events": [
     {
+      "time": "2026-11-26T11:16:37.060Z",
+      "type": "error",
+      "domain": "vortexinvestcapital.online",
+      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
+    },
+    {
+      "time": "2026-11-26T11:16:37.060Z",
+      "type": "error",
+      "domain": "account.novagrowthfund.com",
+      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
+    },
+    {
       "time": "2026-11-26T11:02:03.542Z",
       "type": "error",
       "domain": "vortexinvestcapital.online",
@@ -725,18 +737,6 @@
     },
     {
       "time": "2026-11-25T23:16:47.733Z",
-      "type": "error",
-      "domain": "vortexinvestcapital.online",
-      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
-    },
-    {
-      "time": "2026-11-25T23:16:47.733Z",
-      "type": "error",
-      "domain": "account.novagrowthfund.com",
-      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
-    },
-    {
-      "time": "2026-11-25T23:01:44.812Z",
       "type": "error",
       "domain": "vortexinvestcapital.online",
       "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
