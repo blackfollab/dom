@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-26T14:46:54.722Z",
+  "timestamp": "2026-11-26T15:02:00.194Z",
   "mode": "live",
   "manualCount": 0,
   "summary": {
@@ -24,7 +24,7 @@
         "XRP"
       ],
       "error": null,
-      "durationMs": 2322
+      "durationMs": 2690
     },
     {
       "name": "business.bet",
@@ -38,7 +38,7 @@
         "XRP"
       ],
       "error": null,
-      "durationMs": 3536
+      "durationMs": 4890
     },
     {
       "name": "venosmarket.com",
@@ -53,7 +53,7 @@
         "USDT"
       ],
       "error": null,
-      "durationMs": 949
+      "durationMs": 866
     },
     {
       "name": "account.agencybroker.ca",
@@ -65,7 +65,7 @@
         "BNB"
       ],
       "error": null,
-      "durationMs": 1000
+      "durationMs": 702
     },
     {
       "name": "partner.powerpire.com",
@@ -74,7 +74,7 @@
       "changes": {},
       "skippedInactive": [],
       "error": null,
-      "durationMs": 1403
+      "durationMs": 1601
     },
     {
       "name": "account.novagrowthfund.com",
@@ -83,7 +83,7 @@
       "changes": {},
       "skippedInactive": [],
       "error": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n",
-      "durationMs": 10477
+      "durationMs": 10521
     },
     {
       "name": "vortexinvestcapital.online",
@@ -92,7 +92,7 @@
       "changes": {},
       "skippedInactive": [],
       "error": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n",
-      "durationMs": 10291
+      "durationMs": 10186
     },
     {
       "name": "cypx.capital",
@@ -105,7 +105,7 @@
         "BNB"
       ],
       "error": null,
-      "durationMs": 3527
+      "durationMs": 2798
     },
     {
       "name": "novioncapital.app",
@@ -118,7 +118,7 @@
         "BNB"
       ],
       "error": null,
-      "durationMs": 767
+      "durationMs": 773
     },
     {
       "name": "vyrotrader.com",
@@ -130,7 +130,7 @@
         "BNB"
       ],
       "error": null,
-      "durationMs": 1054
+      "durationMs": 1001
     },
     {
       "name": "coinmatrfx.com",
@@ -142,7 +142,7 @@
         "BNB"
       ],
       "error": null,
-      "durationMs": 3099
+      "durationMs": 3597
     },
     {
       "name": "blocktellex.com",
@@ -156,7 +156,7 @@
         "USDT"
       ],
       "error": null,
-      "durationMs": 6219
+      "durationMs": 3652
     },
     {
       "name": "bitscrest.com",
@@ -165,7 +165,7 @@
       "changes": {},
       "skippedInactive": [],
       "error": null,
-      "durationMs": 1420
+      "durationMs": 1201
     }
   ]
 }
