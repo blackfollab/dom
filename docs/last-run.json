@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-11-28T06:16:52.609Z",
+  "timestamp": "2026-11-28T06:31:53.116Z",
   "mode": "live",
   "manualCount": 0,
   "summary": {
     "total": 13,
     "ok": 0,
-    "noop": 10,
+    "noop": 11,
     "would_update": 0,
     "no_address_fields": 0,
-    "failed": 3
+    "failed": 2
   },
   "domains": [
     {
@@ -24,7 +24,7 @@
         "XRP"
       ],
       "error": null,
-      "durationMs": 2250
+      "durationMs": 3081
     },
     {
       "name": "business.bet",
@@ -38,7 +38,7 @@
         "XRP"
       ],
       "error": null,
-      "durationMs": 4144
+      "durationMs": 5861
     },
     {
       "name": "venosmarket.com",
@@ -53,7 +53,7 @@
         "USDT"
       ],
       "error": null,
-      "durationMs": 985
+      "durationMs": 1077
     },
     {
       "name": "account.agencybroker.ca",
@@ -65,7 +65,7 @@
         "BNB"
       ],
       "error": null,
-      "durationMs": 829
+      "durationMs": 798
     },
     {
       "name": "partner.powerpire.com",
@@ -74,7 +74,7 @@
       "changes": {},
       "skippedInactive": [],
       "error": null,
-      "durationMs": 1481
+      "durationMs": 1653
     },
     {
       "name": "account.novagrowthfund.com",
@@ -83,7 +83,7 @@
       "changes": {},
       "skippedInactive": [],
       "error": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n",
-      "durationMs": 10510
+      "durationMs": 10458
     },
     {
       "name": "vortexinvestcapital.online",
@@ -92,7 +92,7 @@
       "changes": {},
       "skippedInactive": [],
       "error": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n",
-      "durationMs": 10275
+      "durationMs": 10203
     },
     {
       "name": "cypx.capital",
@@ -105,7 +105,7 @@
         "BNB"
       ],
       "error": null,
-      "durationMs": 2050
+      "durationMs": 3338
     },
     {
       "name": "novioncapital.app",
@@ -118,7 +118,7 @@
         "BNB"
       ],
       "error": null,
-      "durationMs": 845
+      "durationMs": 768
     },
     {
       "name": "vyrotrader.com",
@@ -130,7 +130,7 @@
         "BNB"
       ],
       "error": null,
-      "durationMs": 991
+      "durationMs": 914
     },
     {
       "name": "coinmatrfx.com",
@@ -142,16 +142,21 @@
         "BNB"
       ],
       "error": null,
-      "durationMs": 2394
+      "durationMs": 3349
     },
     {
       "name": "blocktellex.com",
-      "status": "error",
-      "template": "unknown",
+      "status": "noop",
+      "template": "standard",
       "changes": {},
-      "skippedInactive": [],
-      "error": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n",
-      "durationMs": 13466
+      "skippedInactive": [
+        "ETH",
+        "USDC",
+        "BNB",
+        "USDT"
+      ],
+      "error": null,
+      "durationMs": 2939
     },
     {
       "name": "bitscrest.com",
@@ -160,7 +165,7 @@
       "changes": {},
       "skippedInactive": [],
       "error": null,
-      "durationMs": 1450
+      "durationMs": 1173
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
-  "lastRun": "2026-11-28T06:16:52.609Z",
+  "lastRun": "2026-11-28T06:31:53.116Z",
   "lastSuccess": "2026-11-20T02:47:54.704Z",
-  "lastFailure": "2026-11-28T06:16:52.609Z",
+  "lastFailure": "2026-11-28T06:31:53.116Z",
   "history": [
     {
       "date": "2026-11-10",
@@ -150,13 +150,25 @@
     {
       "date": "2026-11-28",
       "ok": 0,
-      "noop": 10,
-      "failed": 3,
+      "noop": 11,
+      "failed": 2,
       "total": 13,
       "fixedCount": 0
     }
   ],
   "events": [
+    {
+      "time": "2026-11-28T06:31:53.116Z",
+      "type": "error",
+      "domain": "vortexinvestcapital.online",
+      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
+    },
+    {
+      "time": "2026-11-28T06:31:53.116Z",
+      "type": "error",
+      "domain": "account.novagrowthfund.com",
+      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
+    },
     {
       "time": "2026-11-28T06:16:52.609Z",
       "type": "error",
@@ -741,18 +753,6 @@
     },
     {
       "time": "2026-11-27T19:01:49.963Z",
-      "type": "error",
-      "domain": "vortexinvestcapital.online",
-      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
-    },
-    {
-      "time": "2026-11-27T19:01:49.963Z",
-      "type": "error",
-      "domain": "account.novagrowthfund.com",
-      "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
-    },
-    {
-      "time": "2026-11-27T18:46:43.300Z",
       "type": "error",
       "domain": "vortexinvestcapital.online",
       "details": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('form[action*=\"crypto-wallet\"]') to be visible\n"
